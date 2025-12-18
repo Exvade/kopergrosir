@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Tambah Koper Baru')
+@section('title', 'Tambah Produk Baru')
 
 @section('content')
     <div class="max-w-4xl mx-auto">
@@ -18,9 +18,9 @@
             <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="p-8">
                 @csrf
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div class="space-y-4">
-                        <label class="block text-sm font-semibold text-gray-700">Foto Koper</label>
+                        <label class="block text-sm font-bold text-gray-700">Foto Produk</label>
                         <div class="relative border-2 border-dashed border-gray-300 rounded-xl p-4 text-center hover:border-blue-400 transition"
                             id="drop-area">
                             <input type="file" name="image" id="image-input"
@@ -43,55 +43,88 @@
                         @error('image')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror
+
+                        <div class="pt-4">
+                            <label
+                                class="flex items-center space-x-3 cursor-pointer p-3 bg-blue-50 rounded-lg border border-blue-100">
+                                <input type="checkbox" name="is_featured" value="1"
+                                    class="w-5 h-5 text-blue-600 rounded focus:ring-blue-500">
+                                <span class="text-sm font-bold text-blue-800">Tampilkan di Highlight Depan (Featured)</span>
+                            </label>
+                        </div>
                     </div>
 
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-1">Nama Produk</label>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Nama Produk / Paket</label>
                             <input type="text" name="name" value="{{ old('name') }}"
-                                placeholder="Contoh: Koper Rimowa Classic Silver"
+                                placeholder="Contoh: Paket Silver Umroh"
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none @error('name') border-red-500 @enderror">
                             @error('name')
                                 <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                             @enderror
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Harga (Rp)</label>
-                                <input type="number" name="price" value="{{ old('price') }}" placeholder="1500000"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                            </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Stok (Pcs)</label>
-                                <input type="number" name="stock" value="{{ old('stock') }}" placeholder="10"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                            </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Kategori</label>
+                            <select name="category_id"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            @enderror
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Ukuran</label>
-                                <select name="size"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none appearance-none">
-                                    <option value="20 Inch">20 Inch (Cabin)</option>
-                                    <option value="24 Inch">24 Inch (Medium)</option>
-                                    <option value="28 Inch">28 Inch (Large)</option>
-                                </select>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Harga (Rp)</label>
+                            <input type="number" name="price" value="{{ old('price') }}" placeholder="1500000"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+
+                        <div x-data="{ isPackage: {{ old('is_package') ? 'true' : 'false' }} }">
+                            <label class="flex items-center space-x-3 cursor-pointer mb-4">
+                                <input type="checkbox" name="is_package" x-model="isPackage" value="1"
+                                    class="w-5 h-5 text-blue-600 rounded">
+                                <span class="text-sm font-bold text-gray-700">Ini adalah Produk Paket (Bundling)</span>
+                            </label>
+
+                            <div x-show="isPackage" x-cloak x-transition
+                                class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Daftar Isi Paket</label>
+                                <textarea name="package_items" rows="3"
+                                    placeholder="Contoh: 1x Koper, 1x Tas Passport, 1x ID Card, 1x Bantal Leher"
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white">{{ old('package_items') }}</textarea>
+                                <p class="text-[10px] text-gray-500 mt-1">*Pisahkan dengan koma atau baris baru</p>
                             </div>
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-1">Bahan</label>
-                                <input type="text" name="material" value="{{ old('material') }}"
-                                    placeholder="Contoh: ABS + Polycarbonate"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+
+                            <div x-show="!isPackage" x-transition class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">Ukuran</label>
+                                    <input type="text" name="size" value="{{ old('size') }}"
+                                        placeholder="Contoh: 24 Inch"
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">Bahan</label>
+                                    <input type="text" name="material" value="{{ old('material') }}"
+                                        placeholder="Contoh: Fiber ABS"
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="mt-6">
-                    <label class="block text-sm font-semibold text-gray-700 mb-1">Deskripsi Produk</label>
-                    <textarea name="description" rows="4" placeholder="Jelaskan keunggulan koper ini..."
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Deskripsi Lengkap</label>
+                    <textarea name="description" rows="4" placeholder="Jelaskan detail produk atau paket ini..."
                         class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">{{ old('description') }}</textarea>
                     @error('description')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -100,7 +133,7 @@
 
                 <div class="mt-8 flex justify-end">
                     <button type="submit"
-                        class="bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition shadow-lg">
+                        class="bg-blue-600 text-white px-10 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-500/30">
                         Simpan ke Katalog
                     </button>
                 </div>
