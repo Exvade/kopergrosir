@@ -8,13 +8,25 @@
             <h3 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Katalog</h3>
             <p class="text-sm text-gray-500 mt-1">Kelola semua produk satuan dan paket bundling.</p>
         </div>
-        <a href="{{ route('products.create') }}"
-            class="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-sm active:scale-95">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-            Tambah Produk Baru
-        </a>
+        <div class="flex gap-4">
+
+            <a href="{{ route('packages.create') }}"
+                class="w-full sm:w-auto justify-center bg-violet-600 hover:bg-violet-700 text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-sm active:scale-95">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                </svg>
+                Tambah Paket Baru
+            </a>
+            <a href="{{ route('products.create') }}"
+                class="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-sm active:scale-95">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                    </path>
+                </svg>
+                Tambah Produk Baru
+            </a>
+        </div>
     </div>
 
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -76,17 +88,11 @@
                             <td class="px-6 py-4 text-sm font-bold text-gray-900">
                                 Rp{{ number_format($product->price, 0, ',', '.') }}
                             </td>
-                            <td class="px-6 py-4">
+                            <td class="px-6 py-4 text-sm text-gray-600">
                                 @if ($product->is_package)
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
-                                        📦 Paket
-                                    </span>
+                                    <span class="text-purple-600 font-semibold italic">Internal Paket</span>
                                 @else
-                                    <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
-                                        🏷️ Satuan
-                                    </span>
+                                    {{ $product->category->name ?? 'Tanpa Kategori' }}
                                 @endif
                             </td>
                             <td class="px-6 py-4">

@@ -56,69 +56,24 @@
 
                     <div class="space-y-4">
                         <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Nama Produk / Paket</label>
-                            <input type="text" name="name" value="{{ old('name') }}"
-                                placeholder="Contoh: Paket Silver Umroh"
-                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none @error('name') border-red-500 @enderror">
-                            @error('name')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Kategori</label>
-                            <select name="category_id"
-                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                                <option value="">-- Pilih Kategori --</option>
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}"
-                                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                                        {{ $category->name }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('category_id')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Harga (Rp)</label>
-                            <input type="number" name="price" value="{{ old('price') }}" placeholder="1500000"
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Nama Produk</label>
+                            <input type="text" name="name" required
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                         </div>
 
-                        <div x-data="{ isPackage: {{ old('is_package') ? 'true' : 'false' }} }">
-                            <label class="flex items-center space-x-3 cursor-pointer mb-4">
-                                <input type="checkbox" name="is_package" x-model="isPackage" value="1"
-                                    class="w-5 h-5 text-blue-600 rounded">
-                                <span class="text-sm font-bold text-gray-700">Ini adalah Produk Paket (Bundling)</span>
-                            </label>
-
-                            <div x-show="isPackage" x-cloak x-transition
-                                class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                                <label class="block text-sm font-bold text-gray-700 mb-1">Daftar Isi Paket</label>
-                                <textarea name="package_items" rows="3"
-                                    placeholder="Contoh: 1x Koper, 1x Tas Passport, 1x ID Card, 1x Bantal Leher"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white">{{ old('package_items') }}</textarea>
-                                <p class="text-[10px] text-gray-500 mt-1">*Pisahkan dengan koma atau baris baru</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Ukuran</label>
+                                <input type="text" name="size" placeholder="Contoh: 24 Inch"
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                             </div>
-
-                            <div x-show="!isPackage" x-transition class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-1">Ukuran</label>
-                                    <input type="text" name="size" value="{{ old('size') }}"
-                                        placeholder="Contoh: 24 Inch"
-                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                                </div>
-                                <div>
-                                    <label class="block text-sm font-bold text-gray-700 mb-1">Bahan</label>
-                                    <input type="text" name="material" value="{{ old('material') }}"
-                                        placeholder="Contoh: Fiber ABS"
-                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
-                                </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Bahan</label>
+                                <input type="text" name="material" placeholder="Contoh: Fiber ABS"
+                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                             </div>
                         </div>
+                        <input type="hidden" name="is_package" value="0">
                     </div>
                 </div>
 

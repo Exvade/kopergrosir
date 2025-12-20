@@ -44,7 +44,7 @@
         </div>
 
         <aside x-cloak :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
-            class="fixed inset-y-0 left-0 z-30 w-64 bg-slate-900 text-white flex-shrink-0 flex flex-col transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-0 shadow-xl lg:shadow-none">
+            class="fixed inset-y-0 left-0 z-30 w-64 bg-slate-900 text-white shrink-0 flex flex-col transition-transform duration-300 transform lg:translate-x-0 lg:static lg:inset-0 shadow-xl lg:shadow-none">
 
             <div class="p-6 text-center border-b border-slate-800 flex items-center justify-between">
                 <h1 class="text-xl font-bold tracking-wider uppercase text-blue-400 mx-auto">Koper Admin</h1>
@@ -103,7 +103,7 @@
             <div class="p-4 border-t border-slate-800 bg-slate-900/50">
                 <div class="flex items-center mb-4 px-2 overflow-hidden">
                     <div
-                        class="w-8 h-8 flex-shrink-0 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold shadow-inner">
+                        class="w-8 h-8 shrink-0 rounded-full bg-blue-500 flex items-center justify-center text-sm font-bold shadow-inner">
                         {{ substr(Auth::user()->name, 0, 1) }}
                     </div>
                     <span class="ml-3 text-sm font-medium text-gray-300 truncate">{{ Auth::user()->name }}</span>
