@@ -5,15 +5,15 @@
 @section('content')
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div class="w-full sm:w-auto">
-            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Koper</h3>
-            <p class="text-sm text-gray-500 mt-1">Kelola koleksi koper yang tampil di website.</p>
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Katalog</h3>
+            <p class="text-sm text-gray-500 mt-1">Kelola semua produk satuan dan paket bundling.</p>
         </div>
         <a href="{{ route('products.create') }}"
             class="w-full sm:w-auto justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-sm active:scale-95">
             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
             </svg>
-            Tambah Koper Baru
+            Tambah Produk Baru
         </a>
     </div>
 
@@ -26,8 +26,7 @@
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Produk</th>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Kategori</th>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Harga</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Stok</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Tipe</th>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-center">Aksi
                         </th>
                     </tr>
@@ -54,31 +53,39 @@
                                         @endif
                                     </div>
                                     <div class="ml-4">
-                                        <div class="text-sm font-bold text-gray-800 line-clamp-1">{{ $product->name }}</div>
-                                        <div class="text-xs text-gray-500">{{ $product->size }} | {{ $product->material }}
+                                        <div class="text-sm font-bold text-gray-800 line-clamp-1 flex items-center">
+                                            {{ $product->name }}
+                                            @if ($product->is_featured)
+                                                <span
+                                                    class="ml-2 text-[10px] bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded border border-yellow-200">Featured</span>
+                                            @endif
+                                        </div>
+                                        <div class="text-xs text-gray-500">
+                                            @if ($product->is_package)
+                                                Isi: {{ Str::limit($product->package_items, 30) }}
+                                            @else
+                                                {{ $product->size ?? '-' }} | {{ $product->material ?? '-' }}
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600">
-                                {{ $product->category->name ?? 'Uncategorized' }}
+                                {{ $product->category->name ?? 'Tanpa Kategori' }}
                             </td>
                             <td class="px-6 py-4 text-sm font-bold text-gray-900">
                                 Rp{{ number_format($product->price, 0, ',', '.') }}
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">
-                                {{ $product->stock }} Pcs
-                            </td>
                             <td class="px-6 py-4">
-                                @if ($product->stock > 0)
+                                @if ($product->is_package)
                                     <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                        Ready
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800 border border-purple-200">
+                                        📦 Paket
                                     </span>
                                 @else
                                     <span
-                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                        Habis
+                                        class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200">
+                                        🏷️ Satuan
                                     </span>
                                 @endif
                             </td>
@@ -108,6 +115,9 @@
                             </td>
                         </tr>
                     @empty
+                        <tr>
+                            <td colspan="5" class="px-6 py-10 text-center text-gray-500 italic">Data masih kosong.</td>
+                        </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -117,7 +127,7 @@
             @forelse($products as $product)
                 <div class="p-4 flex flex-col space-y-4">
                     <div class="flex items-center space-x-4">
-                        <div class="h-16 w-16 flex-shrink-0 rounded-lg bg-gray-100 border border-gray-200">
+                        <div class="h-16 w-16 flex-shrink-0 rounded-lg bg-gray-100 border border-gray-200 relative">
                             @if ($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"
                                     class="h-full w-full object-cover rounded-lg">
@@ -130,64 +140,39 @@
                                     </svg>
                                 </div>
                             @endif
+                            @if ($product->is_featured)
+                                <span class="absolute -top-2 -right-2 bg-yellow-400 text-white p-1 rounded-full shadow-sm">
+                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            @endif
                         </div>
                         <div class="flex-1">
-                            <h4 class="text-sm font-bold text-gray-800">{{ $product->name }}</h4>
-                            <p class="text-xs text-gray-500">{{ $product->category->name ?? 'Uncategorized' }}</p>
-                            <div class="mt-1 font-bold text-blue-600">Rp{{ number_format($product->price, 0, ',', '.') }}
+                            <h4 class="text-sm font-bold text-gray-800 line-clamp-1">{{ $product->name }}</h4>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span
+                                    class="text-[10px] px-1.5 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-500 uppercase">{{ $product->category->name ?? 'General' }}</span>
+                                <span
+                                    class="text-[10px] px-1.5 py-0.5 rounded border border-purple-100 bg-purple-50 text-purple-600 font-bold">{{ $product->is_package ? 'PAKET' : 'SATUAN' }}</span>
+                            </div>
+                            <div class="mt-2 font-bold text-slate-900">Rp{{ number_format($product->price, 0, ',', '.') }}
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-between items-center text-xs bg-gray-50 p-2 rounded-lg italic-none">
-                        <div><span class="text-gray-400">Stok:</span> <span class="font-semibold">{{ $product->stock }}
-                                Pcs</span></div>
-                        <div>
-                            @if ($product->stock > 0)
-                                <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold">Ready</span>
-                            @else
-                                <span class="px-2 py-0.5 bg-red-100 text-red-700 rounded-full font-bold">Habis</span>
-                            @endif
-                        </div>
-                    </div>
-
-                    <div class="flex space-x-2">
+                    <div class="flex space-x-2 pt-2">
                         <a href="{{ route('products.edit', $product->id) }}"
-                            class="flex-1 text-center py-2 border border-blue-600 text-blue-600 rounded-lg text-sm font-bold active:bg-blue-50">Edit</a>
+                            class="flex-1 text-center py-2 bg-gray-50 text-blue-600 border border-blue-100 rounded-lg text-sm font-bold active:bg-blue-50">Edit</a>
                         <button type="button" onclick="confirmDelete({{ $product->id }})"
-                            class="flex-1 py-2 bg-red-50 text-red-600 rounded-lg text-sm font-bold active:bg-red-100">Hapus</button>
+                            class="flex-1 py-2 bg-red-50 text-red-600 border border-red-100 rounded-lg text-sm font-bold active:bg-red-100">Hapus</button>
                     </div>
                 </div>
             @empty
-                <div class="px-6 py-10 text-center text-gray-500 italic text-sm">
-                    Belum ada produk koper.
-                </div>
+                <div class="px-6 py-10 text-center text-gray-500 italic text-sm">Belum ada produk.</div>
             @endforelse
         </div>
     </div>
-
-    <script>
-        function confirmDelete(id) {
-            Swal.fire({
-                title: 'Hapus Koper?',
-                text: "Data yang dihapus tidak dapat dikembalikan!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#ef4444',
-                cancelButtonColor: '#64748b',
-                confirmButtonText: 'Ya, Hapus!',
-                cancelButtonText: 'Batal',
-                reverseButtons: true,
-                customClass: {
-                    popup: 'rounded-2xl',
-                    confirmButton: 'rounded-lg px-5 py-2.5',
-                    cancelButton: 'rounded-lg px-5 py-2.5'
-                }
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('delete-form-' + id).submit();
-                }
-            })
-        }
-    </script>
 @endsection

@@ -56,7 +56,7 @@
                 <div>
                     <h2 class="text-3xl font-bold text-slate-900 mb-6 leading-tight">
                         Distributor Utama <br>
-                        <span class="text-gray-400 font-light italic">Travel & Pilgrimage Kit.</span>
+                        <span class="text-gray-400 font-light italic">Artlyn Kreasi Mandiri.</span>
                     </h2>
                     <p class="text-gray-500 leading-relaxed mb-8">
                         Kami hadir sebagai mitra strategis bagi biro perjalanan Haji & Umroh serta toko retail perlengkapan
@@ -150,6 +150,7 @@
                                 <span
                                     class="text-sm font-bold text-slate-900">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
                                 <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' ' . $product->name) }}"
+                                    target="_blank"
                                     class="inline-flex items-center justify-center p-2 rounded-lg bg-gray-50 text-slate-800 hover:bg-slate-900 hover:text-white transition group-all duration-300">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -178,6 +179,7 @@
                     Travel Haji & Umroh atau toko retail Anda.</p>
 
                 <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo, saya tertarik untuk menjadi mitra distributor KoperGrosir.') }}"
+                    target="_blank"
                     class="inline-block px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-gray-200 transition-all shadow-xl active:scale-95">
                     Mulai Kemitraan
                 </a>
@@ -233,6 +235,7 @@
                             </div>
 
                             <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}"
+                                target="_blank"
                                 class="block w-full text-center py-4 bg-gray-50 border border-gray-200 text-slate-900 font-bold rounded-2xl hover:bg-slate-900 hover:text-white transition-all duration-300">
                                 Pesan Paket Ini
                             </a>
