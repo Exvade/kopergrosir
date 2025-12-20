@@ -58,7 +58,7 @@
                     <a href="#paket" class="hover:text-gray-400 transition">Paket Bundling</a>
                     <a href="#about" class="hover:text-gray-400 transition">Tentang Kami</a>
                 </div>
-                <a href="https://wa.me/{{ $waNumber->value ?? '' }}"
+                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
                     class="bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-700 transition">
                     Hubungi Kami
                 </a>
