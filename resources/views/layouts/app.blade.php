@@ -61,6 +61,7 @@
                     <a href="#about" class="hover:text-gray-400 transition">Tentang Kami</a>
                     <a href="#katalog" class="hover:text-gray-400 transition">Katalog</a>
                     <a href="#paket" class="hover:text-gray-400 transition">Paket Bundling</a>
+                    <a href="#testimoni" class="hover:text-gray-400 transition">Testimoni</a>
                 </div>
 
                 <div class="flex items-center gap-4">

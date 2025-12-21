@@ -263,71 +263,84 @@
 
     <section id="katalog" class="py-24 bg-gray-50" x-data="{ activeCategory: 'all' }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Katalog Produk</h2>
-                <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full"></div>
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-900 mb-2 tracking-tight">Katalog Produk</h2>
+                <div class="w-12 h-1 bg-slate-900 mx-auto rounded-full"></div>
             </div>
 
-            <div class="relative mb-12">
-                <div
-                    class="flex flex-nowrap md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth">
-                    <button @click="activeCategory = 'all'"
-                        :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' :
-                            'bg-white text-gray-400 border border-gray-100 hover:bg-gray-100'"
-                        class="flex-none px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm whitespace-nowrap">
-                        Semua
+            <div class="mb-8 overflow-x-auto no-scrollbar pb-2 flex md:justify-center gap-2">
+                <button @click="activeCategory = 'all'"
+                    :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' :
+                        'bg-white text-gray-400 border border-gray-100'"
+                    class="flex-none px-5 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap">
+                    Semua
+                </button>
+                @foreach ($categories as $cat)
+                    <button @click="activeCategory = '{{ $cat->slug }}'"
+                        :class="activeCategory === '{{ $cat->slug }}' ? 'bg-slate-900 text-white shadow-md' :
+                            'bg-white text-gray-400 border border-gray-100'"
+                        class="flex-none px-5 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap">
+                        {{ $cat->name }}
                     </button>
-
-                    @foreach ($categories as $cat)
-                        <button @click="activeCategory = '{{ $cat->slug }}'"
-                            :class="activeCategory === '{{ $cat->slug }}' ? 'bg-slate-900 text-white shadow-md' :
-                                'bg-white text-gray-400 border border-gray-100 hover:bg-gray-100'"
-                            class="flex-none px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm whitespace-nowrap">
-                            {{ $cat->name }}
-                        </button>
-                    @endforeach
-                </div>
-
-                <div
-                    class="md:hidden absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none">
-                </div>
+                @endforeach
             </div>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
                 @foreach ($products as $product)
                     <div x-show="activeCategory === 'all' || activeCategory === '{{ $product->category->slug ?? '' }}'"
-                        x-transition:enter="transition ease-out duration-300"
-                        x-transition:enter-start="opacity-0 transform scale-95"
-                        x-transition:enter-end="opacity-100 transform scale-100"
-                        class="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/40 transition-all duration-500">
+                        class="group bg-white rounded-[1.5rem] border border-gray-200 overflow-hidden hover:border-slate-900 transition-all duration-300 flex flex-col h-full relative">
 
-                        <div class="aspect-square bg-gray-50 overflow-hidden relative">
+                        <div class="relative aspect-[3/4] bg-slate-100 overflow-hidden">
                             <img src="{{ asset('storage/' . $product->image) }}"
-                                alt="Jual {{ $product->name }} - Distributor KoperGrosir"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                            @if (!$product->is_package && $product->size)
+                                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+
+                            <div class="absolute top-2 left-2">
                                 <span
-                                    class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-bold text-slate-700 shadow-sm uppercase">
-                                    {{ $product->size }}
+                                    class="bg-slate-900/90 backdrop-blur-sm text-white text-[8px] font-black px-2 py-1 rounded-md uppercase tracking-tighter">
+                                    {{ $product->category->name ?? 'Retail' }}
                                 </span>
-                            @endif
+                            </div>
+
+                            <div class="absolute bottom-2 right-2 flex flex-col items-end gap-1 pointer-events-none">
+                                @if (!$product->is_package && $product->size)
+                                    <span
+                                        class="bg-white/90 backdrop-blur shadow-sm text-slate-900 text-[9px] font-extrabold px-2 py-0.5 rounded-md border border-slate-200">
+                                        {{ $product->size }}
+                                    </span>
+                                @endif
+                                @if ($product->material)
+                                    <span
+                                        class="bg-white/90 backdrop-blur shadow-sm text-slate-900 text-[9px] font-extrabold px-2 py-0.5 rounded-md border border-slate-200 uppercase truncate max-w-[80px]">
+                                        {{ $product->material }}
+                                    </span>
+                                @endif
+                            </div>
                         </div>
 
-                        <div class="p-4 md:p-6 text-center md:text-left">
-                            <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">
-                                {{ $product->category->name ?? 'Produk' }}</p>
-                            <h4 class="text-sm md:text-base font-bold text-slate-800 mb-3 line-clamp-1">
-                                {{ $product->name }}</h4>
-                            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
-                                <span
-                                    class="text-sm font-bold text-slate-900">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
-                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' ' . $product->name) }}"
-                                    target="_blank"
-                                    class="inline-flex items-center justify-center p-2 rounded-lg bg-gray-50 text-slate-800 hover:bg-slate-900 hover:text-white transition duration-300">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                                        </path>
+                        <div class="p-4 flex flex-col flex-grow bg-white border-t border-gray-50">
+                            <h4
+                                class="text-sm md:text-base font-black text-slate-900 leading-tight mb-4 line-clamp-2 h-10 md:h-12 tracking-tight">
+                                {{ $product->name }}
+                            </h4>
+
+                            <div class="mt-auto flex items-center justify-between gap-2">
+                                <div class="flex flex-col">
+                                    <span
+                                        class="text-[8px] font-bold text-emerald-600 uppercase tracking-widest leading-none mb-1">Ready
+                                        Stock</span>
+                                    <div class="flex items-baseline font-black text-slate-900 tracking-tighter">
+                                        <span class="text-[10px] mr-0.5">Rp</span>
+                                        <span class="text-base md:text-xl leading-none">
+                                            {{ number_format($product->price, 0, ',', '.') }}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
+                                    class="w-10 h-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-lg hover:bg-slate-700 transition active:scale-95 flex-shrink-0">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                                     </svg>
                                 </a>
                             </div>
@@ -540,7 +553,7 @@
         </div>
     </section>
 
-    <section class="py-24 bg-gray-50 overflow-hidden">
+    <section class="py-24 bg-gray-50 overflow-hidden" id="testimoni">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Kepuasan Mitra Kami</h2>

@@ -3,82 +3,89 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BannerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index() {
-        $banners = \App\Models\Banner::latest()->get();
+    public function index()
+    {
+        $banners = Banner::latest()->get();
         return view('admin.banners.index', compact('banners'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|max:255',
-            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048', // Validasi gambar wajib
+            'image' => 'required|image|mimes:jpg,png,jpeg|max:2048',
             'link'  => 'nullable|url'
         ]);
 
         $data = $request->all();
 
-        // Pastikan proses upload ini berjalan
         if ($request->hasFile('image')) {
-            // Simpan gambar dan ambil path-nya
-            $path = $request->file('image')->store('banners', 'public');
-            $data['image'] = $path; // Masukkan path ke array data untuk disimpan ke DB
+            $data['image'] = $request->file('image')->store('banners', 'public');
         }
 
         $data['is_active'] = $request->has('is_active');
         
-        \App\Models\Banner::create($data);
+        Banner::create($data);
 
-        return back()->with('success', 'Banner Image berhasil diunggah!');
+        return back()->with('success', 'Banner berhasil ditambahkan!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    // FUNGSI EDIT (Toggle Aktif/Nonaktif)
+    public function update(Request $request, Banner $banner)
+{
+    // 1. Jika ini adalah "Quick Toggle" (Klik tombol Aktif/Nonaktif di tabel)
+    if ($request->has('is_active') && !$request->has('title')) {
+        $banner->update([
+            'is_active' => $request->is_active ?? 0
+        ]);
+        return back()->with('success', 'Status banner berhasil diubah!');
+    }
+
+    // 2. Jika ini adalah Update Full dari Modal Edit
+    $request->validate([
+        'title' => 'required|max:255',
+        'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        'link'  => 'nullable|url'
+    ]);
+
+    $data = $request->only(['title', 'link']);
+
+    // Logika Ganti Gambar
+    if ($request->hasFile('image')) {
+        if ($banner->image) {
+            \Storage::disk('public')->delete($banner->image);
+        }
+        $data['image'] = $request->file('image')->store('banners', 'public');
+    }
+
+    // Pastikan is_active tetap aman (jika di modal tidak ada checkbox is_active, 
+    // kita biarkan status lamanya atau ambil dari request jika ada)
+    if ($request->has('is_active')) {
+        $data['is_active'] = $request->is_active;
+    }
+
+    $banner->update($data);
+
+    return back()->with('success', 'Detail banner berhasil diperbarui!');
+}
+
+    // FUNGSI DELETE
+    public function destroy(Banner $banner)
     {
-        //
-    }
+        // 1. Hapus file fisik gambar dari folder storage agar tidak menumpuk
+        if ($banner->image) {
+            Storage::disk('public')->delete($banner->image);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, \App\Models\Banner $banner) {
-        $banner->update($request->all());
-        return back()->with('success', 'Banner berhasil diperbarui!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(\App\Models\Banner $banner) {
+        // 2. Hapus data dari database
         $banner->delete();
-        return back()->with('success', 'Banner dihapus!');
+
+        return back()->with('success', 'Banner berhasil dihapus selamanya!');
     }
 }

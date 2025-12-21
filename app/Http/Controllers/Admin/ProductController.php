@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category; // Tambahkan ini
 
 class ProductController extends Controller
 {
@@ -14,17 +15,18 @@ class ProductController extends Controller
      * Menampilkan daftar koper.
      */
     public function index()
-{
-    // Menggunakan with('category') agar query lebih efisien
-    $products = Product::with('category')->latest()->get();
-    return view('admin.products.index', compact('products'));
-}
+    {
+        // Menggunakan with('category') agar query lebih efisien
+        $products = Product::with('category')->latest()->get();
+        return view('admin.products.index', compact('products'));
+    }
 
     /**
      * Menampilkan form tambah koper.
      */
-    public function create() {
-        $categories = \App\Models\Category::all();
+    public function create()
+    {
+        $categories = Category::all(); // Gunakan model Category yang diimpor
         return view('admin.products.create', compact('categories'));
     }
 
@@ -37,12 +39,13 @@ class ProductController extends Controller
         $request->validate([
             'category_id' => 'required|exists:categories,id',
             'name'        => 'required|max:255',
-            'price'       => 'required|numeric',
+            'price'       => 'required|numeric|min:0', // Pastikan harga tidak negatif
             'description' => 'required',
-            'image'       => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
-            // Validasi opsional tergantung tipe
-            'size'        => 'nullable|string',
-            'material'    => 'nullable|string',
+            'image'       => 'required|image|mimes:jpg,png,jpeg|max:2048', // Gambar wajib saat buat baru
+            
+            // Validasi opsional tergantung tipe produk
+            'size'          => 'nullable|string|max:255',
+            'material'      => 'nullable|string|max:255',
             'package_items' => 'nullable|string',
         ]);
     
@@ -70,7 +73,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $categories = \App\Models\Category::all();
+        $categories = Category::all(); // Gunakan model Category yang diimpor
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
@@ -80,29 +83,48 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $request->validate([
-            'name' => 'required|max:255',
-            'price' => 'required|numeric',
-            'stock' => 'required|numeric',
-            'size' => 'required',
+            'category_id' => 'required|exists:categories,id', // Tambahkan validasi kategori
+            'name'        => 'required|max:255',
+            'price'       => 'required|numeric|min:0',
             'description' => 'required',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+            'image'       => 'nullable|image|mimes:jpg,png,jpeg|max:2048', // Gambar tidak wajib diupdate
+
+            // Validasi ini hanya jika bukan paket, jika paket maka package_items yang divalidasi
+            'size'          => $request->has('is_package') ? 'nullable|string|max:255' : 'nullable|string|max:255', // Ubah ke nullable
+            'material'      => $request->has('is_package') ? 'nullable|string|max:255' : 'nullable|string|max:255',
+            'package_items' => $request->has('is_package') ? 'nullable|string' : 'nullable|string', // Ubah ke nullable
+            // 'stock'         => 'required|numeric|min:0', // Jika Anda memiliki field 'stock', pastikan ada di form dan divalidasi
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['_token', '_method']); // Ambil semua kecuali token dan method
         $data['slug'] = Str::slug($request->name);
+        
+        // Pastikan checkbox selalu punya nilai (0 atau 1)
         $data['is_package'] = $request->has('is_package');
         $data['is_featured'] = $request->has('is_featured');
 
         if ($request->hasFile('image')) {
-            if ($product->image) {
+            // Hapus gambar lama jika ada
+            if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
+            // Simpan gambar baru
             $data['image'] = $request->file('image')->store('products', 'public');
         }
 
+        // Jika produk diubah dari paket menjadi non-paket, kosongkan package_items
+        if (!$data['is_package']) {
+            $data['package_items'] = null;
+        } else {
+            // Jika produk diubah dari non-paket menjadi paket, kosongkan size & material
+            $data['size'] = null;
+            $data['material'] = null;
+        }
+
+
         $product->update($data);
 
-        return redirect()->route('products.index')->with('success', 'Katalog diperbarui!');
+        return redirect()->route('products.index')->with('success', 'Katalog berhasil diperbarui!');
     }
 
     /**
@@ -110,7 +132,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if ($product->image) {
+        if ($product->image && Storage::disk('public')->exists($product->image)) {
             Storage::disk('public')->delete($product->image);
         }
 
