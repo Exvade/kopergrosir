@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\BannerController;
 
 // Route Login
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -19,6 +20,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
+    Route::resource('banners', BannerController::class);
     // Route untuk Produk Satuan (Koper, Bantal, dll)
     Route::resource('products', ProductController::class);
     // Route khusus untuk Produk Paket (Bundling)

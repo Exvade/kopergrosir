@@ -25,7 +25,8 @@ class HomeController extends Controller
         // Ambil setting WA
         $waNumber = Setting::where('key', 'wa_number')->first();
         $waMessage = Setting::where('key', 'wa_message')->first();
+        $activeBanners = \App\Models\Banner::where('is_active', true)->latest()->get();
 
-        return view('welcome', compact('featuredProducts', 'categories', 'products', 'packages', 'waNumber', 'waMessage'));
+        return view('welcome', compact('featuredProducts', 'categories', 'products', 'packages', 'waNumber', 'waMessage', 'activeBanners'));
     }
 }
