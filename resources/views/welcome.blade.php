@@ -30,7 +30,7 @@
                 </div>
                 <div class="relative">
                     <div class="absolute -z-10 top-0 right-0 w-72 h-72 bg-gray-200 rounded-full blur-3xl opacity-50"></div>
-                    <img src="https://images.unsplash.com/photo-1565026057447-bc90a3dceb87?q=80&w=1000&auto=format&fit=crop"
+                    <img src="https://images.unsplash.com/photo-1665817301929-69aebc01596d?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Main Showcase"
                         class="rounded-3xl shadow-2xl grayscale-20 hover:grayscale-0 transition duration-700 object-cover h-[500px] w-full">
                 </div>
@@ -38,23 +38,7 @@
         </div>
     </section>
 
-    <section class="py-12 bg-white border-y border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.3em] mb-8">Dipercaya Oleh Berbagai Biro
-                Travel & Instansi</p>
-            <div
-                class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition duration-500">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" class="h-5 md:h-7"
-                    alt="Partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-5 md:h-7"
-                    alt="Partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" class="h-5 md:h-7"
-                    alt="Partner">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg" class="h-5 md:h-7"
-                    alt="Partner">
-            </div>
-        </div>
-    </section>
+
 
     <section class="py-16 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
@@ -569,7 +553,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1577563908411-5077b6ac7624?q=80&w=1000&auto=format&fit=crop"
+                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/122-514x1024.png"
                             alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
@@ -583,7 +567,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1512314889357-e157c22f938d?q=80&w=1000&auto=format&fit=crop"
+                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/11-514x1024.png"
                             alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
@@ -597,7 +581,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1586769852044-692d6e3924ff?q=80&w=1000&auto=format&fit=crop"
+                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/124-514x1024.png"
                             alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
@@ -611,7 +595,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://images.unsplash.com/photo-1611162617263-4cc3040af119?q=80&w=1000&auto=format&fit=crop"
+                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/123-514x1024.png"
                             alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
