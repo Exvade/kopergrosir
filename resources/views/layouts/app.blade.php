@@ -24,6 +24,9 @@
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap"
         rel="stylesheet">
+    <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
@@ -46,22 +49,70 @@
 
 <body class="bg-gray-50 text-slate-800">
 
-    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100">
+    <nav class="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-gray-100" x-data="{ open: false }">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
+            <div class="flex justify-between h-20 items-center relative z-50">
                 <div class="font-bold text-2xl tracking-tighter text-slate-900">
                     KOPER<span class="text-gray-400">GROSIR.</span>
                 </div>
+
                 <div class="hidden md:flex space-x-8 text-sm font-medium">
                     <a href="#home" class="hover:text-gray-400 transition">Home</a>
                     <a href="#about" class="hover:text-gray-400 transition">Tentang Kami</a>
                     <a href="#katalog" class="hover:text-gray-400 transition">Katalog</a>
                     <a href="#paket" class="hover:text-gray-400 transition">Paket Bundling</a>
                 </div>
-                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
-                    class="bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-700 transition">
-                    Hubungi Kami
-                </a>
+
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
+                        class="hidden sm:block bg-slate-800 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-slate-700 transition">
+                        Hubungi Kami
+                    </a>
+
+                    <button @click="open = !open" class="md:hidden p-2 text-slate-600 focus:outline-none relative z-50">
+                        <svg class="w-6 h-6 transition-transform duration-300"
+                            :class="open ? 'rotate-90 scale-0' : 'rotate-0 scale-100'" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                        <svg class="w-6 h-6 absolute top-2 left-2 transition-transform duration-300"
+                            :class="open ? 'rotate-0 scale-100' : '-rotate-90 scale-0'" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" x-cloak>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div x-show="open" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 -translate-y-10" x-transition:enter-end="opacity-100 translate-y-0"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+            x-transition:leave-end="opacity-0 -translate-y-10"
+            class="absolute top-full left-0 w-full bg-white border-b border-gray-100 z-40 md:hidden shadow-2xl overflow-hidden"
+            @click.away="open = false" x-cloak>
+            <div class="px-6 py-8 space-y-4">
+                <a href="#home" @click="open = false"
+                    class="block text-xl font-bold text-slate-900 hover:text-gray-400 transition">Home</a>
+                <a href="#about" @click="open = false"
+                    class="block text-xl font-bold text-slate-900 hover:text-gray-400 transition">Tentang Kami</a>
+                <a href="#katalog" @click="open = false"
+                    class="block text-xl font-bold text-slate-900 hover:text-gray-400 transition">Katalog</a>
+                <a href="#paket" @click="open = false"
+                    class="block text-xl font-bold text-slate-900 hover:text-gray-400 transition">Paket Bundling</a>
+
+                <div class="pt-6 border-t border-gray-100">
+                    <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
+                        class="flex items-center justify-center w-full bg-slate-900 text-white px-6 py-4 rounded-2xl font-bold shadow-lg shadow-gray-200">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                        </svg>
+                        Hubungi WhatsApp
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -101,7 +152,8 @@
                 <div>
                     <h4 class="font-bold text-slate-900 mb-6 uppercase text-xs tracking-widest">Informasi</h4>
                     <ul class="space-y-4">
-                        <li><a href="#home" class="text-sm text-gray-500 hover:text-slate-900 transition">Beranda</a>
+                        <li><a href="#home"
+                                class="text-sm text-gray-500 hover:text-slate-900 transition">Beranda</a>
                         </li>
                         <li><a href="#about" class="text-sm text-gray-500 hover:text-slate-900 transition">Tentang
                                 Kami</a></li>
@@ -176,6 +228,18 @@
         </div>
     </footer>
 
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            AOS.init({
+                duration: 800, // Kecepatan animasi (ms)
+                once: true, // Animasi hanya jalan sekali saat scroll ke bawah
+                easing: 'ease-out-quad'
+            });
+        });
+    </script>
 </body>
 
 </html>

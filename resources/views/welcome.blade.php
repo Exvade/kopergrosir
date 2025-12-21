@@ -58,25 +58,41 @@
 
     <section class="py-16 bg-slate-900">
         <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div class="p-4 group">
-                    <div class="text-4xl font-black text-white mb-2 group-hover:scale-110 transition duration-300">5K+</div>
-                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Koper Terjual</div>
-                </div>
-                <div class="p-4 group">
-                    <div class="text-4xl font-black text-white mb-2 group-hover:scale-110 transition duration-300">200+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center" x-data="{
+                stats: [
+                    { label: 'Koper Terjual', target: 5000, current: 0, suffix: '+' },
+                    { label: 'Agen Aktif', target: 200, current: 0, suffix: '+' },
+                    { label: 'Kota Jangkauan', target: 15, current: 0, suffix: '+' },
+                    { label: 'Aman & Terpercaya', target: 100, current: 0, suffix: '%' }
+                ],
+                animate(item) {
+                    let start = 0;
+                    let end = item.target;
+                    let duration = 2000; // 2 detik
+                    let startTime = null;
+            
+                    const step = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        let progress = Math.min((timestamp - startTime) / duration, 1);
+                        item.current = Math.floor(progress * (end - start) + start);
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                }
+            }" x-init="setTimeout(() => { stats.forEach(item => animate(item)) }, 500)">
+                <template x-for="(stat, index) in stats" :key="index">
+                    <div class="p-4 group" data-aos="fade-up" :data-aos-delay="index * 100">
+                        <div
+                            class="text-4xl font-black text-white mb-2 flex justify-center items-baseline group-hover:scale-110 transition duration-300 tracking-tighter">
+                            <span x-text="stat.current"></span>
+                            <span class="text-white ml-0.5" x-text="stat.suffix"></span>
+                        </div>
+                        <div class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold" x-text="stat.label">
+                        </div>
                     </div>
-                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Agen Aktif</div>
-                </div>
-                <div class="p-4 group">
-                    <div class="text-4xl font-black text-white mb-2 group-hover:scale-110 transition duration-300">15+</div>
-                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Kota Jangkauan</div>
-                </div>
-                <div class="p-4 group">
-                    <div class="text-4xl font-black text-white mb-2 group-hover:scale-110 transition duration-300">100%
-                    </div>
-                    <div class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Aman & Terpercaya</div>
-                </div>
+                </template>
             </div>
         </div>
     </section>
@@ -268,28 +284,39 @@
                 <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full"></div>
             </div>
 
-            <div class="flex flex-wrap justify-center gap-2 mb-12">
-                <button @click="activeCategory = 'all'"
-                    :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' :
-                        'bg-white text-gray-400 border border-gray-100 hover:bg-gray-100'"
-                    class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm">
-                    Semua
-                </button>
-                @foreach ($categories as $cat)
-                    <button @click="activeCategory = '{{ $cat->slug }}'"
-                        :class="activeCategory === '{{ $cat->slug }}' ? 'bg-slate-900 text-white shadow-md' :
+            <div class="relative mb-12">
+                <div
+                    class="flex flex-nowrap md:flex-wrap md:justify-center gap-2 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0 scroll-smooth">
+                    <button @click="activeCategory = 'all'"
+                        :class="activeCategory === 'all' ? 'bg-slate-900 text-white shadow-md' :
                             'bg-white text-gray-400 border border-gray-100 hover:bg-gray-100'"
-                        class="px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm">
-                        {{ $cat->name }}
+                        class="flex-none px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm whitespace-nowrap">
+                        Semua
                     </button>
-                @endforeach
+
+                    @foreach ($categories as $cat)
+                        <button @click="activeCategory = '{{ $cat->slug }}'"
+                            :class="activeCategory === '{{ $cat->slug }}' ? 'bg-slate-900 text-white shadow-md' :
+                                'bg-white text-gray-400 border border-gray-100 hover:bg-gray-100'"
+                            class="flex-none px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 shadow-sm whitespace-nowrap">
+                            {{ $cat->name }}
+                        </button>
+                    @endforeach
+                </div>
+
+                <div
+                    class="md:hidden absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none">
+                </div>
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
                 @foreach ($products as $product)
                     <div x-show="activeCategory === 'all' || activeCategory === '{{ $product->category->slug ?? '' }}'"
-                        x-transition
+                        x-transition:enter="transition ease-out duration-300"
+                        x-transition:enter-start="opacity-0 transform scale-95"
+                        x-transition:enter-end="opacity-100 transform scale-100"
                         class="group bg-white rounded-2xl border border-gray-100 overflow-hidden hover:border-gray-200 hover:shadow-xl hover:shadow-gray-200/40 transition-all duration-500">
+
                         <div class="aspect-square bg-gray-50 overflow-hidden relative">
                             <img src="{{ asset('storage/' . $product->image) }}"
                                 alt="Jual {{ $product->name }} - Distributor KoperGrosir"
@@ -301,6 +328,7 @@
                                 </span>
                             @endif
                         </div>
+
                         <div class="p-4 md:p-6 text-center md:text-left">
                             <p class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-1">
                                 {{ $product->category->name ?? 'Produk' }}</p>
@@ -325,6 +353,17 @@
             </div>
         </div>
     </section>
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
 
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -414,7 +453,7 @@
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
 
                             <div
-                                class="absolute inset-0 bg-linear-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
 
                             <div class="absolute top-5 right-5">
@@ -428,7 +467,7 @@
                         <div class="p-8 flex flex-col grow">
                             <div class="mb-4">
                                 <h3
-                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
+                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors">
                                     {{ $package->name }}</h3>
                                 <div class="flex items-baseline gap-1">
                                     <span
@@ -446,8 +485,8 @@
                                     @foreach ($items as $item)
                                         <div class="flex items-center text-sm text-gray-600 font-medium">
                                             <div
-                                                class="w-5 h-5 rounded-full bg-green-50 flex items-center justify-center mr-3 shrink-0">
-                                                <svg class="w-3 h-3 text-green-600" fill="none" stroke="currentColor"
+                                                class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center mr-3 shrink-0">
+                                                <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24" stroke-width="3">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M5 13l4 4L19 7"></path>
@@ -462,7 +501,7 @@
                             <div class="mt-auto pt-4">
                                 <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}"
                                     target="_blank"
-                                    class="flex items-center justify-center w-full py-4 bg-slate-900 text-white font-bold rounded-2xl group-hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-slate-200 group-hover:shadow-blue-200 overflow-hidden relative">
+                                    class="flex items-center justify-center w-full py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all duration-300 shadow-xl shadow-slate-200 overflow-hidden relative">
                                     <span class="relative z-10">Pesan Paket Sekarang</span>
                                     <svg class="w-5 h-5 ml-2 relative z-10 transform group-hover:translate-x-1 transition-transform"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -621,7 +660,7 @@
     </section>
 
     <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
-        class="fixed bottom-8 right-8 z-60 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 hover:scale-110 active:scale-90 group">
+        class="fixed bottom-8 right-8 z-[100] bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 hover:scale-110 active:scale-90 group">
         <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
             <path
                 d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
