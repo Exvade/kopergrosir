@@ -418,7 +418,7 @@
                     <div
                         class="flex flex-col bg-white rounded-4xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
                         <div class="relative h-72 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('storage/' . $package->image) }}"
+                            <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}"
                                 alt="{{ $package->name }}"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
 
@@ -517,7 +517,7 @@
                         class="group bg-white rounded-[1.5rem] border border-gray-200 overflow-hidden hover:border-slate-900 transition-all duration-300 flex flex-col h-full relative">
 
                         <div class="relative aspect-[3/4] bg-slate-100 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('storage/' . $product->image) }}"
+                            <img loading="lazy" src="{{ asset('aset-media/' . $product->image) }}"
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                             <div class="absolute top-2 left-2">
