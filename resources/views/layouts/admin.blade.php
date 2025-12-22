@@ -76,7 +76,7 @@
                                 <p class="text-sm text-amber-700 font-bold">Konfigurasi Belum Lengkap!</p>
                                 <p class="text-xs text-amber-600">
                                     Nomor WhatsApp belum diisi di database.
-                                    <a href="{{ route('settings.index') }}"
+                                    <a href="{{ route('admin.settings.index') }}"
                                         class="underline font-bold hover:text-amber-800">Atur Sekarang</a>
                                 </p>
                             </div>
