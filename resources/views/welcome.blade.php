@@ -302,7 +302,7 @@
                     <div
                         class="col-span-2 row-span-1 relative rounded-[2rem] overflow-hidden group border border-gray-100 shadow-xl">
                         <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                            <source src="{{ asset(path: 'video-pengecatan.mp4') }}" type="video/mp4">
+                            <source src="{{ asset(path: 'video-pengecatan.MP4') }}" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition duration-500">
                         </div>
@@ -320,7 +320,7 @@
                     </div>
 
                     <div class="col-span-1 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg group">
-                        <img loading="lazy" src="{{ asset(path: 'foto-pabrik-1.JPG') }}"
+                        <img loading="lazy" src="{{ asset(path: 'foto-pabrik-2.JPG') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                     </div>
                 </div>
