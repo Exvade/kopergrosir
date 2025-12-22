@@ -1,6 +1,89 @@
 @extends('layouts.app')
 
 @section('content')
+    {{-- @if (isset($activeBanners) && $activeBanners->count() > 0)
+        <section class="w-full bg-white pt-8" x-data="{
+            active: 0,
+            loop() {
+                setInterval(() => {
+                    this.active = this.active === {{ $activeBanners->count() - 1 }} ? 0 : this.active + 1;
+                    this.scrollToActive();
+                }, 6000);
+            },
+            scrollToActive() {
+                let slider = this.$refs.slider;
+                let width = slider.firstElementChild.getBoundingClientRect().width;
+                slider.scrollTo({ left: width * this.active, behavior: 'smooth' });
+            }
+        }" x-init="loop()">
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative group">
+
+                <div x-ref="slider"
+                    class="flex overflow-hidden snap-x snap-mandatory rounded-[2rem] md:rounded-[3rem] shadow-2xl shadow-gray-200/50 bg-gray-50 border border-gray-100">
+
+                    @foreach ($activeBanners as $index => $banner)
+                        <div class="min-w-full snap-start relative aspect-[16/9] md:aspect-[21/8] overflow-hidden">
+
+                            @php $hasLink = !empty($banner->link); @endphp
+
+                            <{!! $hasLink ? 'a href="' . $banner->link . '"' : 'div' !!} class="block w-full h-full group/item">
+
+                                <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}"
+                                    class="w-full h-full object-cover object-center transition duration-[3000ms] group-hover/item:scale-105">
+
+                                <div
+                                    class="absolute inset-0 bg-slate-900/30 group-hover/item:bg-slate-900/20 transition duration-500">
+                                </div>
+
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent">
+                                </div>
+
+                                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-white max-w-xl">
+                                    <div
+                                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                                        Official Promo
+                                    </div>
+                                    <h3 class="text-2xl md:text-4xl font-bold leading-tight tracking-tight drop-shadow-sm">
+                                        {{ $banner->title }}
+                                    </h3>
+                                </div>
+
+                                </{!! $hasLink ? 'a' : 'div' !!}>
+                        </div>
+                    @endforeach
+                </div>
+
+                @if ($activeBanners->count() > 1)
+                    <button
+                        @click="active = (active === 0) ? {{ $activeBanners->count() - 1 }} : active - 1; scrollToActive()"
+                        class="absolute left-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all opacity-0 group-hover:opacity-100 z-20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path d="M15 19l-7-7 7-7"></path>
+                        </svg>
+                    </button>
+
+                    <button
+                        @click="active = (active === {{ $activeBanners->count() - 1 }}) ? 0 : active + 1; scrollToActive()"
+                        class="absolute right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all opacity-0 group-hover:opacity-100 z-20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                            <path d="M9 5l7 7-7 7"></path>
+                        </svg>
+                    </button>
+
+                    <div class="absolute bottom-6 md:bottom-10 right-8 md:right-12 flex items-center space-x-2 z-20">
+                        @foreach ($activeBanners as $index => $b)
+                            <button @click="active = {{ $index }}; scrollToActive()"
+                                :class="active === {{ $index }} ? 'w-10 bg-white' : 'w-2 bg-white/30'"
+                                class="h-1 rounded-full transition-all duration-700"></button>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </section>
+    @endif --}}
     <section id="home" class="relative overflow-hidden bg-gray-50 pt-16 pb-24">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -30,8 +113,7 @@
                 </div>
                 <div class="relative">
                     <div class="absolute -z-10 top-0 right-0 w-72 h-72 bg-gray-200 rounded-full blur-3xl opacity-50"></div>
-                    <img src="https://images.unsplash.com/photo-1665817301929-69aebc01596d?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        alt="Main Showcase"
+                    <img src="{{ asset('hero-section.JPG') }}" alt="Main Showcase"
                         class="rounded-3xl shadow-2xl grayscale-20 hover:grayscale-0 transition duration-700 object-cover h-[500px] w-full">
                 </div>
             </div>
@@ -87,8 +169,8 @@
                 <div class="relative">
                     <div
                         class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 border-8 border-gray-50">
-                        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=735&auto=format&fit=crop"
-                            alt="Gudang Distributor" class="w-full h-full object-cover grayscale-[30%]">
+                        <img src="{{ asset(path: 'warehouse.JPG') }}" alt="Gudang Distributor"
+                            class="w-full h-full object-cover grayscale-[30%]">
                     </div>
                     <div
                         class="absolute -bottom-6 -right-6 bg-slate-900 text-white p-8 rounded-3xl shadow-xl hidden md:block">
@@ -175,104 +257,82 @@
         </div>
     </section>
 
-    @if (isset($activeBanners) && $activeBanners->count() > 0)
-        <section class="w-full bg-white pt-8" x-data="{
-            active: 0,
-            loop() {
-                setInterval(() => {
-                    this.active = this.active === {{ $activeBanners->count() - 1 }} ? 0 : this.active + 1;
-                    this.scrollToActive();
-                }, 6000);
-            },
-            scrollToActive() {
-                let slider = this.$refs.slider;
-                let width = slider.firstElementChild.getBoundingClientRect().width;
-                slider.scrollTo({ left: width * this.active, behavior: 'smooth' });
-            }
-        }" x-init="loop()">
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div data-aos="fade-right">
+                    <span
+                        class="inline-block px-4 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-6">
+                        Production Excellence
+                    </span>
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
+                        Dibalik Kualitas <br>
+                        <span class="text-gray-400 font-light italic">Koper Premium Kami.</span>
+                    </h2>
+                    <p class="text-gray-500 text-lg leading-relaxed max-w-xl">
+                        Kami tidak hanya menjual, kami memastikan setiap tahap produksi—mulai dari pemilihan material hingga
+                        proses pengecatan—melewati pengawasan ketat untuk menghasilkan produk yang tangguh dan estetik.
+                    </p>
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative group">
-
-                <div x-ref="slider"
-                    class="flex overflow-hidden snap-x snap-mandatory rounded-[2rem] md:rounded-[3rem] shadow-2xl shadow-gray-200/50 bg-gray-50 border border-gray-100">
-
-                    @foreach ($activeBanners as $index => $banner)
-                        <div class="min-w-full snap-start relative aspect-[16/9] md:aspect-[21/8] overflow-hidden">
-
-                            @php $hasLink = !empty($banner->link); @endphp
-
-                            <{!! $hasLink ? 'a href="' . $banner->link . '"' : 'div' !!} class="block w-full h-full group/item">
-
-                                <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}"
-                                    class="w-full h-full object-cover object-center transition duration-[3000ms] group-hover/item:scale-105">
-
-                                <div
-                                    class="absolute inset-0 bg-slate-900/30 group-hover/item:bg-slate-900/20 transition duration-500">
-                                </div>
-
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent">
-                                </div>
-
-                                <div class="absolute bottom-8 left-8 md:bottom-12 md:left-12 text-white max-w-xl">
-                                    <div
-                                        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-[10px] font-bold uppercase tracking-[0.2em] mb-4">
-                                        <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
-                                        Official Promo
-                                    </div>
-                                    <h3 class="text-2xl md:text-4xl font-bold leading-tight tracking-tight drop-shadow-sm">
-                                        {{ $banner->title }}
-                                    </h3>
-                                </div>
-
-                                </{!! $hasLink ? 'a' : 'div' !!}>
+                    <div class="grid grid-cols-2 gap-4 mt-10">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">Pengecatan Presisi</span>
                         </div>
-                    @endforeach
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">QC Berlapis</span>
+                        </div>
+                    </div>
                 </div>
 
-                @if ($activeBanners->count() > 1)
-                    <button
-                        @click="active = (active === 0) ? {{ $activeBanners->count() - 1 }} : active - 1; scrollToActive()"
-                        class="absolute left-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all opacity-0 group-hover:opacity-100 z-20">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            stroke-width="2.5">
-                            <path d="M15 19l-7-7 7-7"></path>
-                        </svg>
-                    </button>
-
-                    <button
-                        @click="active = (active === {{ $activeBanners->count() - 1 }}) ? 0 : active + 1; scrollToActive()"
-                        class="absolute right-10 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-lg border border-white/30 rounded-full flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all opacity-0 group-hover:opacity-100 z-20">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            stroke-width="2.5">
-                            <path d="M9 5l7 7-7 7"></path>
-                        </svg>
-                    </button>
-
-                    <div class="absolute bottom-6 md:bottom-10 right-8 md:right-12 flex items-center space-x-2 z-20">
-                        @foreach ($activeBanners as $index => $b)
-                            <button @click="active = {{ $index }}; scrollToActive()"
-                                :class="active === {{ $index }} ? 'w-10 bg-white' : 'w-2 bg-white/30'"
-                                class="h-1 rounded-full transition-all duration-700"></button>
-                        @endforeach
+                <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]" data-aos="fade-left">
+                    <div
+                        class="col-span-2 row-span-1 relative rounded-[2rem] overflow-hidden group border border-gray-100 shadow-xl">
+                        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                            <source src="{{ asset('video-pengecatan.mp4') }}" type="video/mp4">
+                        </video>
+                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition duration-500">
+                        </div>
+                        <div class="absolute bottom-4 left-4">
+                            <span
+                                class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-[9px] text-white font-bold uppercase tracking-widest border border-white/20">
+                                Video: Finishing Process
+                            </span>
+                        </div>
                     </div>
-                @endif
+
+                    <div class="col-span-1 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg group">
+                        <img loading="lazy" src="{{ asset('foto-pabrik-1.jpg') }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+
+                    <div class="col-span-1 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg group">
+                        <img loading="lazy" src="{{ asset('foto-pabrik-2.jpg') }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                </div>
             </div>
-        </section>
-    @endif
+        </div>
+    </section>
 
 
 
-    <style>
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
 
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-    </style>
+
+
 
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -282,7 +342,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div
+                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
                     class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
                     <div
                         class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
@@ -295,8 +355,8 @@
                     <h4 class="text-lg font-bold text-slate-900 mb-3">Konsultasi</h4>
                     <p class="text-xs text-gray-500 leading-relaxed">Hubungi admin kami untuk konsultasi spesifikasi &
                         kebutuhan Anda.</p>
-                </div>
-                <div
+                </a>
+                <a href="#paket"
                     class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
                     <div
                         class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
@@ -308,7 +368,7 @@
                     <h4 class="text-lg font-bold text-slate-900 mb-3">Pilih Paket</h4>
                     <p class="text-xs text-gray-500 leading-relaxed">Pilih paket perlengkapan travel yang sesuai anggaran.
                     </p>
-                </div>
+                </a>
                 <div
                     class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
                     <div
@@ -358,7 +418,8 @@
                     <div
                         class="flex flex-col bg-white rounded-4xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
                         <div class="relative h-72 overflow-hidden">
-                            <img src="{{ asset('storage/' . $package->image) }}" alt="{{ $package->name }}"
+                            <img loading="lazy" src="{{ asset('storage/' . $package->image) }}"
+                                alt="{{ $package->name }}"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
 
                             <div
@@ -456,7 +517,7 @@
                         class="group bg-white rounded-[1.5rem] border border-gray-200 overflow-hidden hover:border-slate-900 transition-all duration-300 flex flex-col h-full relative">
 
                         <div class="relative aspect-[3/4] bg-slate-100 overflow-hidden">
-                            <img src="{{ asset('storage/' . $product->image) }}"
+                            <img loading="lazy" src="{{ asset('storage/' . $product->image) }}"
                                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
 
                             <div class="absolute top-2 left-2">
@@ -551,6 +612,53 @@
                         tergantung antrian produksi di gudang kami.
                     </div>
                 </div>
+                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button @click="selected !== 3 ? selected = 3 : selected = null"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
+                        <span>Berapa minimal pemesanan untuk harga grosir?</span>
+                        <svg class="w-5 h-5 transition-transform" :class="selected === 3 ? 'rotate-180' : ''"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 3" x-cloak>
+                        Kami melayani pembelian mulai dari satu lusin (50 pcs) untuk mendapatkan harga grosir. Untuk
+                        pemesanan dalam jumlah kontainer atau pengadaan instansi, silakan hubungi admin untuk penawaran
+                        harga spesial.
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button @click="selected !== 4 ? selected = 4 : selected = null"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
+                        <span>Apakah melayani pengiriman ke luar pulau Jawa?</span>
+                        <svg class="w-5 h-5 transition-transform" :class="selected === 4 ? 'rotate-180' : ''"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 4" x-cloak>
+                        Ya, kami melayani pengiriman ke seluruh wilayah Indonesia. Kami bekerja sama dengan berbagai
+                        ekspedisi cargo terpercaya (darat, laut, dan udara) untuk memastikan ongkos kirim tetap efisien bagi
+                        bisnis Anda.
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                    <button @click="selected !== 5 ? selected = 5 : selected = null"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
+                        <span>Bagaimana kebijakan jika barang diterima dalam keadaan rusak?</span>
+                        <svg class="w-5 h-5 transition-transform" :class="selected === 5 ? 'rotate-180' : ''"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 5" x-cloak>
+                        Kepuasan mitra adalah prioritas kami. Kami memberikan garansi retur jika produk diterima dalam
+                        keadaan cacat produksi. Pastikan Anda melampirkan video unboxing saat paket diterima untuk klaim
+                        garansi yang cepat.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -568,8 +676,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/122-514x1024.png"
-                            alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset(path: 'testimoni1.png') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
                     <div
@@ -582,8 +689,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/11-514x1024.png"
-                            alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset(path: 'testimoni2.png') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
                     <div
@@ -596,8 +702,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/124-514x1024.png"
-                            alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset(path: 'testimoni3.png') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
                     <div
@@ -610,8 +715,7 @@
                 <div
                     class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img src="https://www.akmpabrikkoper.com/wp-content/uploads/2024/04/123-514x1024.png"
-                            alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset(path: 'testimoni4.png') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
                     </div>
                     <div
@@ -626,13 +730,16 @@
                 <div class="inline-flex items-center px-6 py-3 bg-white border border-gray-100 rounded-full shadow-sm">
                     <div class="flex -space-x-2 mr-3">
                         <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img src="https://ui-avatars.com/api/?name=Tanto+Hendrianto&background=random" alt="">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Tanto+Hendrianto&background=random"
+                                alt="">
                         </div>
                         <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img src="https://ui-avatars.com/api/?name=Rangga+Rafianto&background=random" alt="">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Rangga+Rafianto&background=random"
+                                alt="">
                         </div>
                         <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img src="https://ui-avatars.com/api/?name=Dayat+Mukti&background=random" alt="">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Dayat+Mukti&background=random"
+                                alt="">
                         </div>
                     </div>
                     <p class="text-xs font-bold text-slate-700">Gabung dengan +200 mitra sukses lainnya</p>

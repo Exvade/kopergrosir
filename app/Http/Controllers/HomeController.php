@@ -10,23 +10,26 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Ambil produk yang ditandai 'is_featured' untuk Hero/Highlight
-        $featuredProducts = Product::where('is_featured', true)->take(4)->get();
-        
-        // Ambil semua kategori untuk filter
-        $categories = Category::with('products')->get();
-        
-        // Ambil semua produk satuan (is_package = false)
-        $products = Product::where('is_package', false)->latest()->take(8)->get();
-
-        // Ambil produk paket
-        $packages = Product::where('is_package', true)->latest()->get();
-
-        // Ambil setting WA
-        $waNumber = Setting::where('key', 'wa_number')->first();
-        $waMessage = Setting::where('key', 'wa_message')->first();
+        // Ambil data, jika tidak ada, buat objek kosong agar tidak error saat akses ->value
+        $waNumber = Setting::where('key', 'whatsapp_number')->first() 
+                    ?? (object) ['value' => '628123456789']; // Nomor default
+    
+        $waMessage = Setting::where('key', 'whatsapp_message')->first() 
+                     ?? (object) ['value' => 'Halo KoperGrosir, saya ingin bertanya...'];
+    
+        // Ambil data lainnya
         $activeBanners = \App\Models\Banner::where('is_active', true)->latest()->get();
-
-        return view('welcome', compact('featuredProducts', 'categories', 'products', 'packages', 'waNumber', 'waMessage', 'activeBanners'));
+        $categories = Category::all();
+        $products = Product::with('category')->latest()->get();
+        $packages = Product::where('is_package', true)->latest()->get();
+    
+        return view('welcome', compact(
+            'waNumber', 
+            'waMessage', 
+            'activeBanners', 
+            'categories', 
+            'products', 
+            'packages'
+        ));
     }
 }

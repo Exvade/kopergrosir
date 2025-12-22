@@ -57,6 +57,32 @@
             </div>
 
             <nav class="flex-1 mt-6 px-4 space-y-2 overflow-y-auto no-scrollbar">
+                @php
+                    // Ambil data menggunakan key 'wa_number' sesuai Controller Anda
+                    $checkWa = \App\Models\Setting::where('key', 'wa_number')->first();
+                @endphp
+
+                @if (!$checkWa || empty($checkWa->value))
+                    <div class="bg-amber-50 border-l-4 border-amber-400 p-4 mb-6 rounded-r-xl shadow-sm">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <svg class="h-5 w-5 text-amber-400" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-amber-700 font-bold">Konfigurasi Belum Lengkap!</p>
+                                <p class="text-xs text-amber-600">
+                                    Nomor WhatsApp belum diisi di database.
+                                    <a href="{{ route('settings.index') }}"
+                                        class="underline font-bold hover:text-amber-800">Atur Sekarang</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <a href="/admin/dashboard"
                     class="flex items-center p-3 {{ request()->is('admin/dashboard') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50' : 'text-gray-300 hover:bg-slate-800' }} rounded-lg transition-all group">
                     <svg class="w-5 h-5 mr-3 {{ request()->is('admin/dashboard') ? 'text-white' : 'text-gray-400 group-hover:text-blue-400' }}"
