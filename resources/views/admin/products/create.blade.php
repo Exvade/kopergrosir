@@ -3,7 +3,7 @@
 @section('title', 'Tambah Produk Baru')
 
 @section('content')
-    <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto" x-data="{ isPackage: false }">
         <div class="mb-6">
             <a href="{{ route('products.index') }}" class="text-blue-600 hover:underline flex items-center">
                 <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -13,6 +13,18 @@
                 Kembali ke Daftar Produk
             </a>
         </div>
+
+        {{-- Menampilkan Error Global jika ada --}}
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700">
+                <p class="font-bold">Terjadi Kesalahan:</p>
+                <ul class="list-disc ml-5">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data" class="p-8">
@@ -26,7 +38,6 @@
                             <input type="file" name="image" id="image-input"
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*"
                                 onchange="previewImage(event)">
-
                             <div id="placeholder">
                                 <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
                                     viewBox="0 0 48 48">
@@ -35,21 +46,16 @@
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                 </svg>
                                 <p class="mt-1 text-sm text-gray-600">Klik atau seret gambar ke sini</p>
-                                <p class="text-xs text-gray-500 italic">PNG, JPG up to 2MB</p>
                             </div>
-
                             <img id="image-preview" class="hidden mx-auto max-h-64 rounded-lg shadow-sm">
                         </div>
-                        @error('image')
-                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                        @enderror
 
                         <div class="pt-4">
                             <label
                                 class="flex items-center space-x-3 cursor-pointer p-3 bg-blue-50 rounded-lg border border-blue-100">
                                 <input type="checkbox" name="is_featured" value="1"
                                     class="w-5 h-5 text-blue-600 rounded focus:ring-blue-500">
-                                <span class="text-sm font-bold text-blue-800">Tampilkan di Highlight Depan (Featured)</span>
+                                <span class="text-sm font-bold text-blue-800">Tampilkan di Highlight Depan</span>
                             </label>
                         </div>
                     </div>
@@ -57,33 +63,64 @@
                     <div class="space-y-4">
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-1">Nama Produk</label>
-                            <input type="text" name="name" required
+                            <input type="text" name="name" value="{{ old('name') }}" required
                                 class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                         </div>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <div>
-                                <label class="block text-sm font-bold text-gray-700 mb-1">Ukuran</label>
-                                <input type="text" name="size" placeholder="Contoh: 24 Inch"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Kategori</label>
+                            <select name="category_id" required
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}"
+                                        {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Harga (Rp)</label>
+                            <input type="number" name="price" value="{{ old('price') }}" required
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+
+                        <div>
+                            <label class="flex items-center space-x-3 cursor-pointer mb-2">
+                                <input type="checkbox" name="is_package" x-model="isPackage" value="1"
+                                    class="w-5 h-5 text-blue-600 rounded">
+                                <span class="text-sm font-bold text-gray-700">Ini adalah Produk Paket</span>
+                            </label>
+
+                            {{-- Field jika Paket --}}
+                            <div x-show="isPackage" class="space-y-2">
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Isi Paket</label>
+                                <textarea name="package_items" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">{{ old('package_items') }}</textarea>
                             </div>
-                            <div>
-                                <label class="block text-sm font-bold text-gray-700 mb-1">Bahan</label>
-                                <input type="text" name="material" placeholder="Contoh: Fiber ABS"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+
+                            {{-- Field jika Bukan Paket --}}
+                            <div x-show="!isPackage" class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">Ukuran</label>
+                                    <input type="text" name="size" value="{{ old('size') }}"
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">Bahan</label>
+                                    <input type="text" name="material" value="{{ old('material') }}"
+                                        class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                                </div>
                             </div>
                         </div>
-                        <input type="hidden" name="is_package" value="0">
                     </div>
                 </div>
 
                 <div class="mt-6">
                     <label class="block text-sm font-bold text-gray-700 mb-1">Deskripsi Lengkap</label>
-                    <textarea name="description" rows="4" placeholder="Jelaskan detail produk atau paket ini..."
+                    <textarea name="description" rows="4" required
                         class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">{{ old('description') }}</textarea>
-                    @error('description')
-                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                    @enderror
                 </div>
 
                 <div class="mt-8 flex justify-end">
