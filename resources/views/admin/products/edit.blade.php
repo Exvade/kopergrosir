@@ -33,7 +33,7 @@
                                 <input type="file" name="image" id="image"
                                     class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" accept="image/*"
                                     onchange="previewImage(event)">
-                                <img id="image-preview" src="{{ asset('storage/' . $product->image) }}"
+                                <img id="image-preview" src="{{ asset('aset-media/' . $product->image) }}"
                                     class="mx-auto max-h-64 rounded-xl shadow-md object-cover">
                                 <p class="text-[10px] text-gray-400 mt-2 absolute bottom-2 left-0 right-0">Klik gambar untuk
                                     mengganti foto</p>

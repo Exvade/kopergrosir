@@ -51,8 +51,8 @@
                                     <div
                                         class="h-12 w-12 flex-shrink-0 rounded-lg bg-gray-100 overflow-hidden border border-gray-200">
                                         @if ($product->image)
-                                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
-                                                class="h-full w-full object-cover">
+                                            <img src="{{ asset('aset-media/' . $product->image) }}"
+                                                alt="{{ $product->name }}" class="h-full w-full object-cover">
                                         @else
                                             <div class="h-full w-full flex items-center justify-center text-gray-400">
                                                 <svg class="w-6 h-6" fill="none" stroke="currentColor"
@@ -135,7 +135,7 @@
                     <div class="flex items-center space-x-4">
                         <div class="h-16 w-16 flex-shrink-0 rounded-lg bg-gray-100 border border-gray-200 relative">
                             @if ($product->image)
-                                <img src="{{ asset('storage/' . $product->image) }}"
+                                <img src="{{ asset('aset-media/' . $product->image) }}"
                                     class="h-full w-full object-cover rounded-lg">
                             @else
                                 <div class="h-full w-full flex items-center justify-center text-gray-400">
