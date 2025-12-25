@@ -809,19 +809,30 @@
         </div>
     </section>
 
-    <section class="py-12 bg-gray-50 pb-24">
+    <section class="py-12 bg-slate-50 pb-24">
         <div class="max-w-5xl mx-auto px-4">
-            <div class="bg-slate-900 rounded-[2.5rem] p-12 text-center relative overflow-hidden shadow-2xl">
-                <div class="absolute top-0 left-0 w-32 h-32 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2">
+            <div class="bg-primary rounded-[3rem] p-12 md:p-16 text-center relative overflow-hidden shadow-2xl shadow-blue-900/20" data-aos="zoom-in">
+                <div class="absolute top-0 left-0 w-64 h-64 bg-secondary/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
+                <div class="absolute bottom-0 right-0 w-64 h-64 bg-secondary/5 rounded-full translate-x-1/2 translate-y-1/2 blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <span class="text-secondary font-black text-[10px] uppercase tracking-[0.4em] mb-4 block">Business Opportunity</span>
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6 tracking-tight">Siap Bekerja Sama <br class="hidden md:block"> dengan Kami?</h2>
+                    <p class="text-blue-100/60 mb-10 max-w-lg mx-auto text-sm md:text-base font-medium leading-relaxed">
+                        Dapatkan penawaran harga grosir tangan pertama untuk kebutuhan Travel Haji & Umroh atau ekspansi toko retail Anda hari ini.
+                    </p>
+                    
+                    <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya tertarik untuk menjadi mitra distributor.') }}"
+                        target="_blank"
+                        class="group inline-flex items-center px-12 py-5 bg-white text-primary font-black rounded-2xl hover:bg-secondary hover:text-white transition-all duration-300 shadow-xl active:scale-95 overflow-hidden">
+                        <span class="uppercase tracking-widest text-xs">Mulai Kemitraan Sekarang</span>
+                        <svg class="w-5 h-5 ml-3 transform group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                    
+                    <p class="mt-8 text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">Konsultasi Gratis • Respon Cepat • Harga Pabrik</p>
                 </div>
-                <h2 class="text-2xl md:text-4xl font-bold text-white mb-6">Siap Bekerja Sama dengan Kami?</h2>
-                <p class="text-gray-400 mb-10 max-w-lg mx-auto text-sm">Dapatkan penawaran harga grosir terbaik untuk
-                    kebutuhan Travel Haji & Umroh atau toko retail Anda hari ini.</p>
-                <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya tertarik untuk menjadi mitra distributor.') }}"
-                    target="_blank"
-                    class="inline-block px-10 py-4 bg-white text-slate-900 font-bold rounded-full hover:bg-gray-200 transition-all shadow-xl active:scale-95">
-                    Mulai Kemitraan
-                </a>
             </div>
         </div>
     </section>
