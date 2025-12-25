@@ -27,10 +27,13 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#0F172A',   /* Slate-900: Industrial Deep Blue */
-                        secondary: '#2563EB', /* Blue-600: Royal Accent */
-                        accent: '#EFF6FF',    /* Blue-50: Soft Sky Background */
-                    }
+                    // Biru Navy yang lebih terang (bukan hitam)
+                    primary: '#1e3a8a',   /* Blue-900: Deep Royal Blue */
+                    // Biru Royal Utama
+                    secondary: '#2563eb', /* Blue-600: Royal Blue */
+                    // Biru Langit Lembut
+                    accent: '#dbeafe',    /* Blue-100: Soft Sky Blue */
+                }
                 }
             }
         }
