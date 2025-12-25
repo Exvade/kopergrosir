@@ -616,84 +616,109 @@
 
     <section class="py-24 bg-white" x-data="{ selected: 1 }">
         <div class="max-w-3xl mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4">Sering Ditanyakan</h2>
-                <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full"></div>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Common Inquiries</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Sering Ditanyakan</h2>
+                <div class="w-12 h-1.5 bg-secondary mx-auto rounded-full"></div>
             </div>
+    
             <div class="space-y-4">
-                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+                <div class="border border-blue-50 rounded-3xl overflow-hidden shadow-sm transition-all duration-300" 
+                     :class="selected === 1 ? 'shadow-xl shadow-blue-900/5 border-blue-100' : ''" data-aos="fade-up" data-aos-delay="100">
                     <button @click="selected !== 1 ? selected = 1 : selected = null"
-                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
-                        <span>Apakah bisa custom logo travel pada koper?</span>
-                        <svg class="w-5 h-5 transition-transform" :class="selected === 1 ? 'rotate-180' : ''"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50/50 transition-colors group">
+                        <span class="font-bold text-sm tracking-tight transition-colors"
+                              :class="selected === 1 ? 'text-secondary' : 'text-primary group-hover:text-secondary'">
+                            Apakah bisa custom logo travel pada koper?
+                        </span>
+                        <svg class="w-5 h-5 transition-transform duration-300" 
+                             :class="[selected === 1 ? 'rotate-180 text-secondary' : 'text-slate-400']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 1" x-cloak>
+                    <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 1" x-collapse x-cloak>
                         Tentu bisa. Kami menyediakan layanan sablon atau grafir logo instansi/biro travel Anda dengan
-                        minimal pemesanan tertentu untuk menjaga kualitas.
+                        minimal pemesanan tertentu untuk menjaga kualitas produksi.
                     </div>
                 </div>
-                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+    
+                <div class="border border-blue-50 rounded-3xl overflow-hidden shadow-sm transition-all duration-300"
+                     :class="selected === 2 ? 'shadow-xl shadow-blue-900/5 border-blue-100' : ''" data-aos="fade-up" data-aos-delay="200">
                     <button @click="selected !== 2 ? selected = 2 : selected = null"
-                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
-                        <span>Berapa lama estimasi pengiriman partai besar?</span>
-                        <svg class="w-5 h-5 transition-transform" :class="selected === 2 ? 'rotate-180' : ''"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50/50 transition-colors group">
+                        <span class="font-bold text-sm tracking-tight transition-colors"
+                              :class="selected === 2 ? 'text-secondary' : 'text-primary group-hover:text-secondary'">
+                            Berapa lama estimasi pengiriman partai besar?
+                        </span>
+                        <svg class="w-5 h-5 transition-transform duration-300" 
+                             :class="[selected === 2 ? 'rotate-180 text-secondary' : 'text-slate-400']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 2" x-cloak>
+                    <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 2" x-collapse x-cloak>
                         Untuk stok ready, pengiriman H+1. Untuk custom atau pesanan sangat besar, estimasi 7-14 hari kerja
                         tergantung antrian produksi di gudang kami.
                     </div>
                 </div>
-                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+    
+                <div class="border border-blue-50 rounded-3xl overflow-hidden shadow-sm transition-all duration-300"
+                     :class="selected === 3 ? 'shadow-xl shadow-blue-900/5 border-blue-100' : ''" data-aos="fade-up" data-aos-delay="300">
                     <button @click="selected !== 3 ? selected = 3 : selected = null"
-                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
-                        <span>Berapa minimal pemesanan untuk harga grosir?</span>
-                        <svg class="w-5 h-5 transition-transform" :class="selected === 3 ? 'rotate-180' : ''"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50/50 transition-colors group">
+                        <span class="font-bold text-sm tracking-tight transition-colors"
+                              :class="selected === 3 ? 'text-secondary' : 'text-primary group-hover:text-secondary'">
+                            Berapa minimal pemesanan untuk harga grosir?
+                        </span>
+                        <svg class="w-5 h-5 transition-transform duration-300" 
+                             :class="[selected === 3 ? 'rotate-180 text-secondary' : 'text-slate-400']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 3" x-cloak>
-                        Kami melayani pembelian mulai dari satu lusin (50 pcs) untuk mendapatkan harga grosir. Untuk
-                        pemesanan dalam jumlah kontainer atau pengadaan instansi, silakan hubungi admin untuk penawaran
-                        harga spesial.
+                    <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 3" x-collapse x-cloak>
+                        Kami melayani pembelian mulai dari satu lusin (12 pcs) untuk koper standar. Untuk mendapatkan harga grosir terbaik atau pengadaan instansi dalam jumlah kontainer, silakan hubungi admin kami.
                     </div>
                 </div>
-
-                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+    
+                <div class="border border-blue-50 rounded-3xl overflow-hidden shadow-sm transition-all duration-300"
+                     :class="selected === 4 ? 'shadow-xl shadow-blue-900/5 border-blue-100' : ''" data-aos="fade-up" data-aos-delay="400">
                     <button @click="selected !== 4 ? selected = 4 : selected = null"
-                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
-                        <span>Apakah melayani pengiriman ke luar pulau Jawa?</span>
-                        <svg class="w-5 h-5 transition-transform" :class="selected === 4 ? 'rotate-180' : ''"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50/50 transition-colors group">
+                        <span class="font-bold text-sm tracking-tight transition-colors"
+                              :class="selected === 4 ? 'text-secondary' : 'text-primary group-hover:text-secondary'">
+                            Apakah melayani pengiriman ke luar pulau Jawa?
+                        </span>
+                        <svg class="w-5 h-5 transition-transform duration-300" 
+                             :class="[selected === 4 ? 'rotate-180 text-secondary' : 'text-slate-400']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 4" x-cloak>
+                    <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 4" x-collapse x-cloak>
                         Ya, kami melayani pengiriman ke seluruh wilayah Indonesia. Kami bekerja sama dengan berbagai
-                        ekspedisi cargo terpercaya (darat, laut, dan udara) untuk memastikan ongkos kirim tetap efisien bagi
-                        bisnis Anda.
+                        ekspedisi cargo terpercaya (darat, laut, dan udara) untuk memastikan efisiensi logistik bisnis Anda.
                     </div>
                 </div>
-
-                <div class="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+    
+                <div class="border border-blue-50 rounded-3xl overflow-hidden shadow-sm transition-all duration-300"
+                     :class="selected === 5 ? 'shadow-xl shadow-blue-900/5 border-blue-100' : ''" data-aos="fade-up" data-aos-delay="500">
                     <button @click="selected !== 5 ? selected = 5 : selected = null"
-                        class="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition font-bold text-slate-800 text-sm">
-                        <span>Bagaimana kebijakan jika barang diterima dalam keadaan rusak?</span>
-                        <svg class="w-5 h-5 transition-transform" :class="selected === 5 ? 'rotate-180' : ''"
+                        class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50/50 transition-colors group">
+                        <span class="font-bold text-sm tracking-tight transition-colors"
+                              :class="selected === 5 ? 'text-secondary' : 'text-primary group-hover:text-secondary'">
+                            Bagaimana kebijakan jika barang diterima rusak?
+                        </span>
+                        <svg class="w-5 h-5 transition-transform duration-300" 
+                             :class="[selected === 5 ? 'rotate-180 text-secondary' : 'text-slate-400']"
                             fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
                         </svg>
                     </button>
-                    <div class="px-6 pb-6 text-gray-500 text-xs leading-relaxed" x-show="selected === 5" x-cloak>
+                    <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 5" x-collapse x-cloak>
                         Kepuasan mitra adalah prioritas kami. Kami memberikan garansi retur jika produk diterima dalam
-                        keadaan cacat produksi. Pastikan Anda melampirkan video unboxing saat paket diterima untuk klaim
-                        garansi yang cepat.
+                        keadaan cacat produksi. Wajib melampirkan video unboxing untuk klaim garansi yang cepat.
                     </div>
                 </div>
             </div>
