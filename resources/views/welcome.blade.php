@@ -84,37 +84,69 @@
             </div>
         </section>
     @endif --}}
-    <section id="home" class="relative overflow-hidden bg-gray-50 pt-16 pb-24">
+    <section id="home" class="relative overflow-hidden bg-slate-50 pt-16 pb-24">
+        <div class="absolute -z-10 top-0 right-0 w-96 h-96 bg-blue-100/50 rounded-full blur-3xl opacity-60 translate-x-1/2 -translate-y-1/2"></div>
+        
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="z-10">
+                <div class="z-10" data-aos="fade-right">
                     <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-bold tracking-widest text-gray-400 uppercase mb-6 shadow-sm">
+                        class="inline-block px-4 py-1.5 rounded-full bg-white border border-blue-100 text-[10px] font-black tracking-[0.2em] text-blue-600 uppercase mb-6 shadow-sm">
                         Official Distributor
                     </span>
-                    <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
                         Solusi Perjalanan & <br>
-                        <span class="text-gray-400 font-light italic">Ibadah Terpercaya.</span>
+                        <span class="text-blue-600 font-light italic">Ibadah Terpercaya.</span>
                     </h1>
-                    <p class="text-lg text-gray-500 mb-10 max-w-lg leading-relaxed">
+                    <p class="text-lg text-slate-500 mb-10 max-w-lg leading-relaxed font-medium">
                         Kami menyediakan berbagai perlengkapan travel mulai dari koper premium hingga paket lengkap Haji &
                         Umroh dengan standar kualitas distributor resmi.
                     </p>
+                    
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#katalog"
-                            class="px-8 py-4 bg-slate-900 text-white rounded-xl font-bold hover:bg-slate-800 transition shadow-lg shadow-slate-200 text-center">
+                            class="px-10 py-4 bg-slate-900 text-white rounded-2xl font-bold hover:bg-blue-600 transition-all duration-300 shadow-xl shadow-blue-900/10 text-center active:scale-95">
                             Lihat Katalog
                         </a>
                         <a href="#paket"
-                            class="px-8 py-4 bg-white text-slate-900 border border-gray-200 rounded-xl font-bold hover:bg-gray-50 transition text-center">
+                            class="px-10 py-4 bg-white text-slate-900 border border-blue-100 rounded-2xl font-bold hover:bg-blue-50 hover:text-blue-600 transition-all duration-300 text-center active:scale-95">
                             Paket Bundling
                         </a>
                     </div>
+    
+                    <div class="mt-12 flex items-center gap-8 border-t border-slate-200 pt-8">
+                        <div>
+                            <p class="text-2xl font-black text-slate-900">10k+</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Produk Terjual</p>
+                        </div>
+                        <div class="w-px h-8 bg-slate-200"></div>
+                        <div>
+                            <p class="text-2xl font-black text-slate-900">500+</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Mitra Travel</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="relative">
-                    <div class="absolute -z-10 top-0 right-0 w-72 h-72 bg-gray-200 rounded-full blur-3xl opacity-50"></div>
-                    <img src="{{ asset('hero-section.JPG') }}" alt="Main Showcase"
-                        class="rounded-3xl shadow-2xl grayscale-20 hover:grayscale-0 transition duration-700 object-cover h-[500px] w-full">
+    
+                <div class="relative" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="absolute -left-6 bottom-12 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl z-20 border border-blue-50 hidden md:block">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase">Quality Assurance</p>
+                                <p class="text-sm font-black text-slate-900">Garansi Distributor</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white group">
+                        <img src="{{ asset('hero-section.JPG') }}" alt="Main Showcase"
+                            class="h-[550px] w-full object-cover transition duration-1000 group-hover:scale-110 group-hover:rotate-1">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent"></div>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-600 rounded-full -z-10 opacity-20 blur-2xl"></div>
                 </div>
             </div>
         </div>
