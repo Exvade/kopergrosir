@@ -436,80 +436,84 @@
     </section>
 
 
-    <section id="paket" class="py-24 bg-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4 text-center md:text-left">
+    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+    
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 text-center md:text-left" data-aos="fade-up">
                 <div class="max-w-xl">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Paket Hemat Distributor</h2>
-                    <p class="text-gray-500 text-sm">Bundling perlengkapan travel dengan harga khusus partai besar.</p>
+                    <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Special Bundling</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Paket Hemat Distributor</h2>
+                    <p class="text-slate-500 text-base font-medium">Dapatkan perlengkapan travel lengkap dengan harga khusus pengadaan partai besar.</p>
                 </div>
-                <div class="hidden md:block h-px flex-1 bg-gray-200 mx-8 mb-4"></div>
+                <div class="hidden md:block h-px flex-1 bg-blue-100 mx-8 mb-4"></div>
+                <div class="pb-2">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Update 2025</span>
+                </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach ($packages as $package)
                     <div
-                        class="flex flex-col bg-white rounded-4xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group">
+                        data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}"
+                        class="flex flex-col bg-white rounded-[3rem] overflow-hidden border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-3 transition-all duration-500 group">
+                        
                         <div class="relative h-72 overflow-hidden">
                             <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}"
                                 alt="{{ $package->name }}"
-                                class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-
-                            <div class="absolute top-5 right-5">
-                                <span
-                                    class="bg-white/90 backdrop-blur-md text-slate-900 text-[10px] font-extrabold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">
+                                class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+    
+                            <div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    
+                            <div class="absolute top-6 right-6">
+                                <span class="bg-secondary text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-lg">
                                     Best Value
                                 </span>
                             </div>
                         </div>
-
-                        <div class="p-8 flex flex-col grow">
-                            <div class="mb-4">
-                                <h3
-                                    class="text-xl font-bold text-slate-900 mb-2 group-hover:text-slate-700 transition-colors">
-                                    {{ $package->name }}</h3>
-                                <div class="flex items-baseline gap-1">
-                                    <span
-                                        class="text-2xl font-black text-slate-900 italic">Rp{{ number_format($package->price, 0, ',', '.') }}</span>
-                                    <span class="text-gray-400 text-xs font-medium">/ paket</span>
+    
+                        <div class="p-10 flex flex-col grow">
+                            <div class="mb-6">
+                                <h3 class="text-2xl font-black text-primary mb-3 group-hover:text-secondary transition-colors duration-300 uppercase tracking-tight">
+                                    {{ $package->name }}
+                                </h3>
+                                <div class="flex items-baseline gap-2">
+                                    <span class="text-3xl font-black text-secondary italic">Rp{{ number_format($package->price, 0, ',', '.') }}</span>
+                                    <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">/ paket</span>
                                 </div>
                             </div>
-
-                            <div class="w-full h-px bg-gray-100 mb-6"></div>
-
-                            <div class="space-y-4 mb-8">
-                                <p class="text-[10px] font-bold text-gray-400 uppercase tracking-[0.2em]">Rincian Item:</p>
-                                <div class="grid gap-3">
+    
+                            <div class="w-full h-px bg-blue-50 mb-8"></div>
+    
+                            <div class="space-y-5 mb-10">
+                                <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] flex items-center">
+                                    <span class="w-8 h-[1px] bg-blue-200 mr-3"></span>
+                                    Rincian Item:
+                                </p>
+                                <div class="grid gap-4">
                                     @php $items = explode(',', $package->package_items); @endphp
                                     @foreach ($items as $item)
-                                        <div class="flex items-center text-sm text-gray-600 font-medium">
-                                            <div
-                                                class="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center mr-3 shrink-0">
-                                                <svg class="w-3 h-3 text-slate-900" fill="none" stroke="currentColor"
-                                                    viewBox="0 0 24 24" stroke-width="3">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M5 13l4 4L19 7"></path>
+                                        <div class="flex items-center text-sm text-slate-600 font-bold group/item">
+                                            <div class="w-6 h-6 rounded-lg bg-accent flex items-center justify-center mr-4 shrink-0 group-hover/item:bg-secondary group-hover/item:text-white transition-colors duration-300">
+                                                <svg class="w-3.5 h-3.5 text-secondary group-hover/item:text-white" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" stroke-width="4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
                                                 </svg>
                                             </div>
-                                            <span class="line-clamp-1">{{ trim($item) }}</span>
+                                            <span class="group-hover/item:text-primary transition-colors">{{ trim($item) }}</span>
                                         </div>
                                     @endforeach
                                 </div>
                             </div>
-
-                            <div class="mt-auto pt-4">
+    
+                            <div class="mt-auto">
                                 <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}"
                                     target="_blank"
-                                    class="flex items-center justify-center w-full py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all duration-300 shadow-xl shadow-slate-200 overflow-hidden relative">
-                                    <span class="relative z-10">Pesan Paket Sekarang</span>
-                                    <svg class="w-5 h-5 ml-2 relative z-10 transform group-hover:translate-x-1 transition-transform"
+                                    class="flex items-center justify-center w-full py-5 bg-primary text-white font-black rounded-2xl hover:bg-secondary transition-all duration-300 shadow-xl shadow-blue-900/10 relative overflow-hidden active:scale-95 group/btn">
+                                    <span class="relative z-10 uppercase tracking-widest text-xs">Pesan Paket Sekarang</span>
+                                    <svg class="w-5 h-5 ml-3 relative z-10 transform group-hover/btn:translate-x-2 transition-transform"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                     </svg>
                                 </a>
                             </div>
