@@ -154,41 +154,48 @@
 
 
 
-    <section class="py-16 bg-slate-900">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center" x-data="{
-                stats: [
-                    { label: 'Koper Terjual', target: 5000, current: 0, suffix: '+' },
-                    { label: 'Agen Aktif', target: 200, current: 0, suffix: '+' },
-                    { label: 'Kota Jangkauan', target: 15, current: 0, suffix: '+' },
-                    { label: 'Aman & Terpercaya', target: 100, current: 0, suffix: '%' }
-                ],
-                animate(item) {
-                    let start = 0;
-                    let end = item.target;
-                    let duration = 2000; // 2 detik
-                    let startTime = null;
-            
-                    const step = (timestamp) => {
-                        if (!startTime) startTime = timestamp;
-                        let progress = Math.min((timestamp - startTime) / duration, 1);
-                        item.current = Math.floor(progress * (end - start) + start);
-                        if (progress < 1) {
-                            window.requestAnimationFrame(step);
-                        }
-                    };
-                    window.requestAnimationFrame(step);
-                }
-            }" x-init="setTimeout(() => { stats.forEach(item => animate(item)) }, 500)">
+    <section class="py-20 bg-primary relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#2563EB 0.5px, transparent 0.5px); background-size: 24px 24px;"></div>
+    
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 text-center" x-data="{
+                    stats: [
+                        { label: 'Koper Terjual', target: 5000, current: 0, suffix: '+' },
+                        { label: 'Agen Aktif', target: 200, current: 0, suffix: '+' },
+                        { label: 'Kota Jangkauan', target: 15, current: 0, suffix: '+' },
+                        { label: 'Aman & Terpercaya', target: 100, current: 0, suffix: '%' }
+                    ],
+                    animate(item) {
+                        let start = 0;
+                        let end = item.target;
+                        let duration = 2000;
+                        let startTime = null;
+                
+                        const step = (timestamp) => {
+                            if (!startTime) startTime = timestamp;
+                            let progress = Math.min((timestamp - startTime) / duration, 1);
+                            item.current = Math.floor(progress * (end - start) + start);
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            }
+                        };
+                        window.requestAnimationFrame(step);
+                    }
+                }" x-init="setTimeout(() => { stats.forEach(item => animate(item)) }, 500)">
+                
                 <template x-for="(stat, index) in stats" :key="index">
-                    <div class="p-4 group" data-aos="fade-up" :data-aos-delay="index * 100">
-                        <div
-                            class="text-4xl font-black text-white mb-2 flex justify-center items-baseline group-hover:scale-110 transition duration-300 tracking-tighter">
-                            <span x-text="stat.current"></span>
-                            <span class="text-white ml-0.5" x-text="stat.suffix"></span>
+                    <div class="p-6 group relative" data-aos="fade-up" :data-aos-delay="index * 100">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-8 h-1 bg-secondary rounded-full opacity-0 group-hover:opacity-100 group-hover:w-12 transition-all duration-500"></div>
+                        
+                        <div class="text-4xl md:text-5xl font-black text-white mb-3 flex justify-center items-baseline tracking-tighter">
+                            <span class="text-white" x-text="stat.current"></span>
+                            <span class="text-secondary ml-1" x-text="stat.suffix"></span>
                         </div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-bold" x-text="stat.label">
+                        
+                        <div class="text-[10px] md:text-xs text-blue-200/50 uppercase tracking-[0.3em] font-black" x-text="stat.label">
                         </div>
+    
+                        <div class="absolute inset-0 bg-secondary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
                 </template>
             </div>
