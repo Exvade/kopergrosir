@@ -205,91 +205,81 @@
     <section id="about" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-                <div class="relative">
-                    <div
-                        class="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 border-8 border-gray-50">
-                        <img src="{{ asset(path: 'warehouse.JPG') }}" alt="Gudang Distributor"
-                            class="w-full h-full object-cover grayscale-[30%]">
+                <div class="relative" data-aos="fade-right">
+                    <div class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-8 border-slate-50">
+                        <img src="{{ asset('warehouse.JPG') }}" alt="Gudang Distributor"
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition duration-700">
                     </div>
-                    <div
-                        class="absolute -bottom-6 -right-6 bg-slate-900 text-white p-8 rounded-3xl shadow-xl hidden md:block">
-                        <div class="text-3xl font-bold mb-1 italic">10+</div>
-                        <div class="text-[10px] text-gray-400 uppercase tracking-widest font-semibold">Tahun Pengalaman
-                        </div>
+                    <div class="absolute -bottom-6 -right-6 bg-primary text-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-white hidden md:block">
+                        <div class="text-4xl font-black mb-1 italic text-secondary">10+</div>
+                        <div class="text-[10px] text-blue-200 uppercase tracking-[0.2em] font-bold">Tahun Pengalaman</div>
                     </div>
                 </div>
-
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-bold text-slate-900 leading-tight">
-                        Distributor Utama <br>
-                        <span class="text-gray-400 font-light italic">Travel & Pilgrimage Kit.</span>
-                    </h2>
-                    <p class="text-gray-500 leading-relaxed">
-                        KoperGrosir hadir sebagai mitra strategis bagi biro perjalanan Haji & Umroh serta toko retail
-                        perlengkapan travel. Kami berdedikasi untuk memberikan produk terbaik dengan proses pengadaan yang
-                        transparan dan profesional.
-                    </p>
-                    <div class="flex items-center gap-4 p-5 bg-gray-50 rounded-2xl border border-gray-100 shadow-sm">
-                        <div
-                            class="shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center text-slate-700">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    
+                <div class="space-y-8" data-aos="fade-left">
+                    <div class="space-y-4">
+                        <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em]">Authorized Partner</span>
+                        <h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
+                            Distributor Utama <br>
+                            <span class="text-blue-600 font-light italic">Travel & Pilgrimage Kit.</span>
+                        </h2>
+                        <p class="text-slate-500 leading-relaxed text-lg">
+                            KoperGrosir hadir sebagai mitra strategis bagi biro perjalanan Haji & Umroh serta toko retail
+                            perlengkapan travel. Kami berdedikasi untuk memberikan produk terbaik dengan proses pengadaan yang
+                            transparan dan profesional.
+                        </p>
+                    </div>
+    
+                    <div class="flex items-center gap-5 p-6 bg-accent rounded-[2rem] border border-blue-100 shadow-sm group hover:bg-blue-600 transition-all duration-500">
+                        <div class="shrink-0 w-14 h-14 bg-white rounded-2xl shadow-sm flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-white transition-colors">
+                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
                                 </path>
                             </svg>
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 text-sm">Jangkauan se-Indonesia</h4>
-                            <p class="text-xs text-gray-500">Menerima pesanan dan kiriman ke seluruh wilayah nusantara.</p>
+                            <h4 class="font-black text-primary text-base group-hover:text-white transition-colors">Jangkauan se-Indonesia</h4>
+                            <p class="text-sm text-slate-500 group-hover:text-blue-100 transition-colors">Menerima pesanan dan kiriman ke seluruh wilayah nusantara.</p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12 border-t border-gray-100">
-                <div class="flex items-start gap-5 p-4 rounded-2xl hover:bg-gray-50 transition duration-300">
-                    <div
-                        class="shrink-0 w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg">
+    
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pt-12 border-t border-blue-50">
+                <div class="flex items-start gap-5 p-6 rounded-3xl hover:bg-accent border border-transparent hover:border-blue-100 transition duration-500 group">
+                    <div class="shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-secondary transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-900 mb-1">Kualitas Premium</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">Pengerjaan rapi dan material berkualitas tinggi.
-                        </p>
+                        <h4 class="font-bold text-primary mb-1">Kualitas Premium</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Pengerjaan rapi dan material berkualitas tinggi yang tahan banting.</p>
                     </div>
                 </div>
-                <div class="flex items-start gap-5 p-4 rounded-2xl hover:bg-gray-50 transition duration-300">
-                    <div
-                        class="shrink-0 w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg">
+    
+                <div class="flex items-start gap-5 p-6 rounded-3xl hover:bg-accent border border-transparent hover:border-blue-100 transition duration-500 group">
+                    <div class="shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-secondary transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 011-1h1a2 2 0 100-4H7a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-900 mb-1">Custom Desain</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">Bebas pilih desain sesuai keinginan instansi Anda.
-                        </p>
+                        <h4 class="font-bold text-primary mb-1">Custom Desain</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Bebas sablon logo dan desain koper khusus identitas instansi Anda.</p>
                     </div>
                 </div>
-                <div class="flex items-start gap-5 p-4 rounded-2xl hover:bg-gray-50 transition duration-300">
-                    <div
-                        class="shrink-0 w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white shadow-lg">
+    
+                <div class="flex items-start gap-5 p-6 rounded-3xl hover:bg-accent border border-transparent hover:border-blue-100 transition duration-500 group">
+                    <div class="shrink-0 w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg group-hover:bg-secondary transition-colors">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
-                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                         </svg>
                     </div>
                     <div>
-                        <h4 class="font-bold text-slate-900 mb-1">Harga Bersaing</h4>
-                        <p class="text-xs text-gray-500 leading-relaxed">Penawaran harga terbaik untuk partai besar/grosir.
-                        </p>
+                        <h4 class="font-bold text-primary mb-1">Harga Bersaing</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">Penawaran harga tangan pertama untuk kebutuhan partai besar.</p>
                     </div>
                 </div>
             </div>
