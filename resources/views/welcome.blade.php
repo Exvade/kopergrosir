@@ -291,77 +291,73 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
                 <div data-aos="fade-right">
                     <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-slate-50 border border-slate-100 text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-6">
+                        class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black tracking-[0.2em] text-blue-600 uppercase mb-6">
                         Production Excellence
                     </span>
-                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6">
+                    <h2 class="text-3xl md:text-5xl font-black text-slate-900 leading-tight mb-6 tracking-tight">
                         Dibalik Kualitas <br>
-                        <span class="text-gray-400 font-light italic">Koper Premium Kami.</span>
+                        <span class="text-blue-600 font-light italic">Koper Premium Kami.</span>
                     </h2>
-                    <p class="text-gray-500 text-lg leading-relaxed max-w-xl">
+                    <p class="text-slate-500 text-lg leading-relaxed max-w-xl font-medium">
                         Kami tidak hanya menjual, kami memastikan setiap tahap produksi—mulai dari pemilihan material hingga
                         proses pengecatan—melewati pengawasan ketat untuk menghasilkan produk yang tangguh dan estetik.
                     </p>
-
+    
                     <div class="grid grid-cols-2 gap-4 mt-10">
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-3 group">
                             <div
-                                class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-11 h-11 rounded-xl bg-slate-900 group-hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-900/10">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <span class="text-sm font-bold text-slate-700">Pengecatan Presisi</span>
+                            <span class="text-sm font-black text-slate-700 uppercase tracking-wider">Pengecatan Presisi</span>
                         </div>
-                        <div class="flex items-center gap-3">
+                        <div class="flex items-center gap-3 group">
                             <div
-                                class="w-10 h-10 rounded-full bg-slate-900 flex items-center justify-center text-white shrink-0">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                class="w-11 h-11 rounded-xl bg-slate-900 group-hover:bg-blue-600 transition-colors duration-300 flex items-center justify-center text-white shrink-0 shadow-lg shadow-blue-900/10">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7"></path>
                                 </svg>
                             </div>
-                            <span class="text-sm font-bold text-slate-700">QC Berlapis</span>
+                            <span class="text-sm font-black text-slate-700 uppercase tracking-wider">QC Berlapis</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[500px]" data-aos="fade-left">
+    
+                <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[550px]" data-aos="fade-left">
                     <div
-                        class="col-span-2 row-span-1 relative rounded-[2rem] overflow-hidden group border border-gray-100 shadow-xl">
+                        class="col-span-2 row-span-1 relative rounded-[2.5rem] overflow-hidden group border border-blue-50 shadow-2xl shadow-blue-900/5">
                         <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                            <source src="{{ asset(path: 'video-pengecatan.MP4') }}" type="video/mp4">
+                            <source src="{{ asset('video-pengecatan.MP4') }}" type="video/mp4">
                         </video>
-                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-transparent transition duration-500">
+                        <div class="absolute inset-0 bg-blue-900/10 group-hover:bg-transparent transition duration-500">
                         </div>
-                        <div class="absolute bottom-4 left-4">
+                        <div class="absolute bottom-6 left-6">
                             <span
-                                class="bg-white/20 backdrop-blur-md px-3 py-1 rounded-lg text-[9px] text-white font-bold uppercase tracking-widest border border-white/20">
+                                class="bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl text-[10px] text-blue-600 font-black uppercase tracking-[0.2em] border border-white shadow-lg">
                                 Video: Finishing Process
                             </span>
                         </div>
                     </div>
-
-                    <div class="col-span-1 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg group">
-                        <img loading="lazy" src="{{ asset(path: 'foto-pabrik-1.JPG') }}"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+    
+                    <div class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group">
+                        <img loading="lazy" src="{{ asset('foto-pabrik-1.JPG') }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500"></div>
                     </div>
-
-                    <div class="col-span-1 rounded-[2rem] overflow-hidden border border-gray-100 shadow-lg group">
-                        <img loading="lazy" src="{{ asset(path: 'foto-pabrik-2.JPG') }}"
-                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+    
+                    <div class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group">
+                        <img loading="lazy" src="{{ asset('foto-pabrik-2.JPG') }}"
+                            class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
+                        <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
-
-
-
 
     <section class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
