@@ -359,59 +359,67 @@
         </div>
     </section>
 
-    <section class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Langkah Mudah Pemesanan</h2>
-                <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full"></div>
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Our Workflow</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Langkah Mudah Pemesanan</h2>
+                <div class="w-12 h-1.5 bg-secondary mx-auto rounded-full"></div>
             </div>
-
+    
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
-                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
+                    data-aos="fade-up" data-aos-delay="100"
+                    class="bg-accent/30 p-8 rounded-[2.5rem] border border-blue-50 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500">
                     <div
-                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
                             </path>
                         </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-3">Konsultasi</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Hubungi admin kami untuk konsultasi spesifikasi &
-                        kebutuhan Anda.</p>
+                    <h4 class="text-lg font-black text-primary mb-3 uppercase tracking-tight">Konsultasi</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Hubungi admin kami untuk konsultasi spesifikasi &
+                        kebutuhan Anda secara personal.</p>
                 </a>
+    
                 <a href="#paket"
-                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
+                    data-aos="fade-up" data-aos-delay="200"
+                    class="bg-accent/30 p-8 rounded-[2.5rem] border border-blue-50 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500">
                     <div
-                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
                         </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-3">Pilih Paket</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Pilih paket perlengkapan travel yang sesuai anggaran.
-                    </p>
+                    <h4 class="text-lg font-black text-primary mb-3 uppercase tracking-tight">Pilih Paket</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Pilih paket perlengkapan travel yang sesuai dengan anggaran dan standar biro Anda.</p>
                 </a>
+    
                 <div
-                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
+                    data-aos="fade-up" data-aos-delay="300"
+                    class="bg-accent/30 p-8 rounded-[2.5rem] border border-blue-50 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500">
                     <div
-                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
                             </path>
                         </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-3">Pembayaran</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Lakukan pembayaran aman melalui metode yang tersedia.
-                    </p>
+                    <h4 class="text-lg font-black text-primary mb-3 uppercase tracking-tight">Pembayaran</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Lakukan pelunasan atau DP pembayaran aman melalui metode transfer resmi kami.</p>
                 </div>
+    
                 <div
-                    class="bg-gray-50 p-8 rounded-3xl border border-gray-100 flex flex-col items-center text-center group hover:bg-white hover:shadow-xl transition-all duration-300">
+                    data-aos="fade-up" data-aos-delay="400"
+                    class="bg-accent/30 p-8 rounded-[2.5rem] border border-blue-50 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500">
                     <div
-                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-slate-900 group-hover:text-white transition-all duration-300">
+                        class="w-16 h-16 bg-white shadow-sm rounded-2xl flex items-center justify-center text-secondary mb-6 group-hover:bg-secondary group-hover:text-white group-hover:rotate-6 transition-all duration-500">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"></path>
@@ -420,8 +428,8 @@
                             </path>
                         </svg>
                     </div>
-                    <h4 class="text-lg font-bold text-slate-900 mb-3">Pengiriman</h4>
-                    <p class="text-xs text-gray-500 leading-relaxed">Produk kami kirimkan tepat waktu ke lokasi Anda.</p>
+                    <h4 class="text-lg font-black text-primary mb-3 uppercase tracking-tight">Pengiriman</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed font-medium">Produk akan dipacking standar industrial dan dikirim tepat waktu ke lokasi Anda.</p>
                 </div>
             </div>
         </div>
