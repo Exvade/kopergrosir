@@ -725,86 +725,85 @@
         </div>
     </section>
 
-    <section class="py-24 bg-gray-50 overflow-hidden" id="testimoni">
+    <section class="py-24 bg-slate-50 overflow-hidden" id="testimoni">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 mb-4 tracking-tight">Kepuasan Mitra Kami</h2>
-                <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full"></div>
-                <p class="text-gray-500 mt-4 text-sm md:text-base">Bukti nyata layanan kami melalui percakapan dengan mitra
-                    di seluruh Indonesia.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Our Reputation</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Kepuasan Mitra Kami</h2>
+                <div class="w-12 h-1.5 bg-secondary mx-auto rounded-full"></div>
+                <p class="text-slate-500 mt-6 text-sm md:text-base max-w-2xl mx-auto">Bukti nyata dedikasi layanan kami melalui pengalaman langsung para mitra dari seluruh penjuru Indonesia.</p>
             </div>
-
+    
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-                <div
-                    class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img loading="lazy" src="{{ asset(path: 'testimoni1.png') }}" alt="Testimoni WA"
-                            class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
+                <div data-aos="fade-up" data-aos-delay="100"
+                    class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
+                        <img loading="lazy" src="{{ asset('testimoni1.png') }}" alt="Testimoni WA"
+                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
                     </div>
-                    <div
-                        class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Biro Travel Jakarta</p>
-                        <p class="text-[10px] text-gray-500 mt-1">"Pengiriman cepat & koper sangat solid!"</p>
-                    </div>
-                </div>
-
-                <div
-                    class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img loading="lazy" src="{{ asset(path: 'testimoni2.png') }}" alt="Testimoni WA"
-                            class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
-                    </div>
-                    <div
-                        class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Agen Jawa Timur</p>
-                        <p class="text-[10px] text-gray-500 mt-1">"Baru sampai langsung ludes diborong agen lokal."</p>
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-blue-50 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Biro Travel Jakarta</p>
+                        <p class="text-[10px] font-bold text-primary mt-1 leading-relaxed">"Pengiriman cepat & koper sangat solid!"</p>
                     </div>
                 </div>
-
-                <div
-                    class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img loading="lazy" src="{{ asset(path: 'testimoni3.png') }}" alt="Testimoni WA"
-                            class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
+    
+                <div data-aos="fade-up" data-aos-delay="200"
+                    class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
+                        <img loading="lazy" src="{{ asset('testimoni2.png') }}" alt="Testimoni WA"
+                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
                     </div>
-                    <div
-                        class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Retailer Kalimantan</p>
-                        <p class="text-[10px] text-gray-500 mt-1">"Bahan fiber koper aslinya lebih mewah dari foto."</p>
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-blue-50 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Agen Jawa Timur</p>
+                        <p class="text-[10px] font-bold text-primary mt-1 leading-relaxed">"Baru sampai langsung ludes diborong agen."</p>
                     </div>
                 </div>
-
-                <div
-                    class="group relative bg-white rounded-3xl p-2 shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-                    <div class="aspect-[9/16] rounded-2xl overflow-hidden bg-gray-200">
-                        <img loading="lazy" src="{{ asset(path: 'testimoni4.png') }}" alt="Testimoni WA"
-                            class="w-full h-full object-cover grayscale-20 group-hover:grayscale-0 transition duration-500">
+    
+                <div data-aos="fade-up" data-aos-delay="300"
+                    class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
+                        <img loading="lazy" src="{{ asset('testimoni3.png') }}" alt="Testimoni WA"
+                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
                     </div>
-                    <div
-                        class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <p class="text-[10px] font-bold text-slate-900 uppercase tracking-widest">Mitra Sumatera</p>
-                        <p class="text-[10px] text-gray-500 mt-1">"Langganan tetap untuk paket Umroh kami."</p>
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-blue-50 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Retailer Kalimantan</p>
+                        <p class="text-[10px] font-bold text-primary mt-1 leading-relaxed">"Bahan koper aslinya lebih mewah dari foto."</p>
+                    </div>
+                </div>
+    
+                <div data-aos="fade-up" data-aos-delay="400"
+                    class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
+                    <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
+                        <img loading="lazy" src="{{ asset('testimoni4.png') }}" alt="Testimoni WA"
+                            class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
+                    </div>
+                    <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-blue-50 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                        <p class="text-[10px] font-black text-secondary uppercase tracking-widest">Mitra Sumatera</p>
+                        <p class="text-[10px] font-bold text-primary mt-1 leading-relaxed">"Langganan tetap untuk paket Umroh kami."</p>
                     </div>
                 </div>
             </div>
-
-            <div class="mt-12 flex justify-center">
-                <div class="inline-flex items-center px-6 py-3 bg-white border border-gray-100 rounded-full shadow-sm">
-                    <div class="flex -space-x-2 mr-3">
-                        <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Tanto+Hendrianto&background=random"
-                                alt="">
+    
+            <div class="mt-16 flex justify-center" data-aos="zoom-in">
+                <div class="inline-flex items-center px-8 py-4 bg-white border border-blue-100 rounded-[2rem] shadow-xl shadow-blue-900/5">
+                    <div class="flex -space-x-3 mr-5">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Tanto+Hendrianto&background=0F172A&color=fff" alt="">
                         </div>
-                        <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Rangga+Rafianto&background=random"
-                                alt="">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Rangga+Rafianto&background=2563EB&color=fff" alt="">
                         </div>
-                        <div class="w-8 h-8 rounded-full border-2 border-white bg-slate-200 overflow-hidden">
-                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Dayat+Mukti&background=random"
-                                alt="">
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
+                            <img loading="lazy" src="https://ui-avatars.com/api/?name=Dayat+Mukti&background=0F172A&color=fff" alt="">
+                        </div>
+                        <div class="w-10 h-10 rounded-full border-2 border-white bg-secondary flex items-center justify-center text-[10px] font-bold text-white shadow-sm italic">
+                            +200
                         </div>
                     </div>
-                    <p class="text-xs font-bold text-slate-700">Gabung dengan +200 mitra sukses lainnya</p>
+                    <div>
+                        <p class="text-[10px] font-black text-primary uppercase tracking-[0.2em] leading-none mb-1">Join Our Success</p>
+                        <p class="text-xs font-bold text-slate-400 italic leading-none">Mitra terdaftar di seluruh Indonesia</p>
+                    </div>
                 </div>
             </div>
         </div>
