@@ -41,4 +41,46 @@ class PackageController extends Controller
 
         return redirect()->route('packages.index')->with('success', 'Paket Berhasil Ditambahkan!');
     }
+
+    public function edit(Package $package)
+    {
+        return view('admin.packages.edit', compact('package'));
+    }
+
+    public function update(Request $request, Package $package)
+    {
+        $request->validate([
+            'name'          => 'required|max:255',
+            'package_items' => 'required',
+            'image'         => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        $data = $request->all();
+        $data['slug'] = \Illuminate\Support\Str::slug($request->name);
+        $data['is_featured'] = $request->has('is_featured');
+
+        if ($request->hasFile('image')) {
+            // Hapus foto lama jika ada
+            if ($package->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($package->image)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($package->image);
+            }
+            $data['image'] = $request->file('image')->store('packages', 'public');
+        }
+
+        $package->update($data);
+
+        return redirect()->route('packages.index')->with('success', 'Paket berhasil diperbarui!');
+    }
+
+    public function destroy(Package $package)
+    {
+        // Hapus foto dari storage
+        if ($package->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($package->image)) {
+            \Illuminate\Support\Facades\Storage::disk('public')->delete($package->image);
+        }
+
+        $package->delete();
+
+        return redirect()->route('packages.index')->with('success', 'Paket berhasil dihapus!');
+    }
 }
