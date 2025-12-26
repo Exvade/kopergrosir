@@ -357,7 +357,7 @@
 
                     <div
                         class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group relative">
-                        <img loading="lazy" src="{{ asset('foto-pabrik-2.JPG') }}"
+                        <img loading="lazy" src="{{ asset('foto-pabrik-3.JPG') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
                         <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500">
                         </div>
