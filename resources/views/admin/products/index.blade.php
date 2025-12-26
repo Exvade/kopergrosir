@@ -6,10 +6,10 @@
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div class="w-full sm:w-auto">
             <h3 class="text-xl md:text-2xl font-bold text-gray-800">Daftar Katalog</h3>
-            <p class="text-sm text-gray-500 mt-1">Kelola semua produk satuan dan paket bundling.</p>
+            <p class="text-sm text-gray-500 mt-1">Kelola foto produk dan kategori katalog.</p>
         </div>
         <div class="flex gap-4">
-
+            {{-- Tombol Paket tetap ada jika Anda masih menggunakan sistem Paket --}}
             <a href="{{ route('packages.create') }}"
                 class="w-full sm:w-auto justify-center bg-violet-600 hover:bg-violet-700 text-white px-5 py-2.5 rounded-lg font-medium transition flex items-center shadow-sm active:scale-95">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,20 +30,17 @@
     </div>
 
     <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-
         <div class="hidden md:block overflow-x-auto">
             <table class="w-full text-left border-collapse">
                 <thead class="bg-gray-50 border-b border-gray-200">
                     <tr>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Produk</th>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Kategori</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Harga</th>
-                        <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider">Tipe</th>
                         <th class="px-6 py-4 text-xs font-semibold text-gray-500 uppercase tracking-wider text-center">Aksi
                         </th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-gray-100 italic-none">
+                <tbody class="divide-y divide-gray-100">
                     @forelse($products as $product)
                         <tr class="hover:bg-gray-50 transition-colors">
                             <td class="px-6 py-4">
@@ -72,28 +69,13 @@
                                                     class="ml-2 text-[10px] bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded border border-yellow-200">Featured</span>
                                             @endif
                                         </div>
-                                        <div class="text-xs text-gray-500">
-                                            @if ($product->is_package)
-                                                Isi: {{ Str::limit($product->package_items, 30) }}
-                                            @else
-                                                {{ $product->size ?? '-' }} | {{ $product->material ?? '-' }}
-                                            @endif
-                                        </div>
                                     </div>
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-600">
-                                {{ $product->category->name ?? 'Tanpa Kategori' }}
-                            </td>
-                            <td class="px-6 py-4 text-sm font-bold text-gray-900">
-                                Rp{{ number_format($product->price, 0, ',', '.') }}
-                            </td>
-                            <td class="px-6 py-4 text-sm text-gray-600">
-                                @if ($product->is_package)
-                                    <span class="text-purple-600 font-semibold italic">Internal Paket</span>
-                                @else
+                                <span class="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-xs font-bold">
                                     {{ $product->category->name ?? 'Tanpa Kategori' }}
-                                @endif
+                                </span>
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center space-x-2">
@@ -122,7 +104,8 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="5" class="px-6 py-10 text-center text-gray-500 italic">Data masih kosong.</td>
+                            <td colspan="3" class="px-6 py-10 text-center text-gray-500 italic text-sm">Data katalog
+                                kosong.</td>
                         </tr>
                     @endforelse
                 </tbody>
@@ -146,29 +129,17 @@
                                     </svg>
                                 </div>
                             @endif
-                            @if ($product->is_featured)
-                                <span class="absolute -top-2 -right-2 bg-yellow-400 text-white p-1 rounded-full shadow-sm">
-                                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z">
-                                        </path>
-                                    </svg>
-                                </span>
-                            @endif
                         </div>
                         <div class="flex-1">
                             <h4 class="text-sm font-bold text-gray-800 line-clamp-1">{{ $product->name }}</h4>
                             <div class="flex items-center gap-2 mt-1">
                                 <span
-                                    class="text-[10px] px-1.5 py-0.5 rounded border border-gray-200 bg-gray-50 text-gray-500 uppercase">{{ $product->category->name ?? 'General' }}</span>
-                                <span
-                                    class="text-[10px] px-1.5 py-0.5 rounded border border-purple-100 bg-purple-50 text-purple-600 font-bold">{{ $product->is_package ? 'PAKET' : 'SATUAN' }}</span>
-                            </div>
-                            <div class="mt-2 font-bold text-slate-900">Rp{{ number_format($product->price, 0, ',', '.') }}
+                                    class="text-[10px] px-2 py-0.5 rounded-full border border-blue-100 bg-blue-50 text-blue-600 font-bold uppercase tracking-tight">
+                                    {{ $product->category->name ?? 'General' }}
+                                </span>
                             </div>
                         </div>
                     </div>
-
                     <div class="flex space-x-2 pt-2">
                         <a href="{{ route('products.edit', $product->id) }}"
                             class="flex-1 text-center py-2 bg-gray-50 text-blue-600 border border-blue-100 rounded-lg text-sm font-bold active:bg-blue-50">Edit</a>
@@ -181,6 +152,7 @@
             @endforelse
         </div>
     </div>
+
     <script>
         function confirmDelete(id) {
             Swal.fire({
