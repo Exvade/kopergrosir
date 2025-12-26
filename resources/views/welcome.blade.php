@@ -448,7 +448,7 @@
     </section>
 
 
-    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden">
+    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden" x-data="{ openModal: false, activePackage: {} }">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
             style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
 
@@ -458,98 +458,48 @@
                 <div class="max-w-xl">
                     <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em] mb-2 block">Special
                         Bundling</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Paket Hemat
-                        Distributor</h2>
-                    <p class="text-slate-500 text-base font-medium">Dapatkan perlengkapan travel lengkap dengan harga
-                        khusus pengadaan partai besar.</p>
-                </div>
-                <div class="hidden md:block h-px flex-1 bg-blue-100 mx-8 mb-4"></div>
-                <div class="pb-2">
-                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Update 2025</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-primary mb-4 tracking-tight">Paket Bundling</h2>
+                    <p class="text-slate-500 text-base font-medium">Klik pada paket untuk melihat rincian isi dan deskripsi
+                        lengkap.</p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach ($packages as $package)
-                    <div data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 100 }}"
-                        class="flex flex-col bg-white rounded-[3rem] overflow-hidden border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 hover:-translate-y-3 transition-all duration-500 group">
+                    <div @click="openModal = true; activePackage = { 
+                            name: '{{ $package->name }}', 
+                            image: '{{ asset('storage/' . $package->image) }}', 
+                            items: '{{ $package->package_items }}', 
+                            description: '{{ $package->description }}',
+                            wa_link: 'https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}'
+                        }"
+                        class="group bg-white rounded-[3rem] overflow-hidden border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer relative">
 
-                        <div class="relative h-72 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}"
+                        <div class="relative h-80 overflow-hidden">
+                            <img loading="lazy" src="{{ asset('storage/' . $package->image) }}"
                                 alt="{{ $package->name }}"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
 
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                            </div>
-
-                            <div class="absolute top-6 right-6">
+                                class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                                 <span
-                                    class="bg-secondary text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-lg">
-                                    Best Value
-                                </span>
+                                    class="bg-white text-primary px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">Lihat
+                                    Detail</span>
                             </div>
                         </div>
 
-                        <div class="p-10 flex flex-col grow">
-                            <div class="mb-6">
-                                <h3
-                                    class="text-2xl font-black text-primary mb-3 group-hover:text-secondary transition-colors duration-300 uppercase tracking-tight">
-                                    {{ $package->name }}
-                                </h3>
-                                <div class="flex items-baseline gap-2">
-                                    <span
-                                        class="text-3xl font-black text-secondary italic">Rp{{ number_format($package->price, 0, ',', '.') }}</span>
-                                    <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">/ paket</span>
-                                </div>
-                            </div>
-
-                            <div class="w-full h-px bg-blue-50 mb-8"></div>
-
-                            <div class="space-y-5 mb-10">
-                                <p
-                                    class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] flex items-center">
-                                    <span class="w-8 h-[1px] bg-blue-200 mr-3"></span>
-                                    Rincian Item:
-                                </p>
-                                <div class="grid gap-4">
-                                    @php $items = explode(',', $package->package_items); @endphp
-                                    @foreach ($items as $item)
-                                        <div class="flex items-center text-sm text-slate-600 font-bold group/item">
-                                            <div
-                                                class="w-6 h-6 rounded-lg bg-accent flex items-center justify-center mr-4 shrink-0 group-hover/item:bg-secondary group-hover/item:text-white transition-colors duration-300">
-                                                <svg class="w-3.5 h-3.5 text-secondary group-hover/item:text-white"
-                                                    fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                                    stroke-width="4">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M5 13l4 4L19 7"></path>
-                                                </svg>
-                                            </div>
-                                            <span
-                                                class="group-hover/item:text-primary transition-colors">{{ trim($item) }}</span>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-
-                            <div class="mt-auto">
-                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}"
-                                    target="_blank"
-                                    class="flex items-center justify-center w-full py-5 bg-primary text-white font-black rounded-2xl hover:bg-secondary transition-all duration-300 shadow-xl shadow-blue-900/10 relative overflow-hidden active:scale-95 group/btn">
-                                    <span class="relative z-10 uppercase tracking-widest text-xs">Pesan Paket
-                                        Sekarang</span>
-                                    <svg class="w-5 h-5 ml-3 relative z-10 transform group-hover/btn:translate-x-2 transition-transform"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
-                                            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                    </svg>
-                                </a>
-                            </div>
+                        <div class="p-8 text-center bg-white">
+                            <h3
+                                class="text-xl font-black text-primary group-hover:text-secondary transition-colors duration-300 uppercase tracking-tight">
+                                {{ $package->name }}
+                            </h3>
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
+
+        @include('partials.package-modal')
     </section>
 
     <section id="katalog" class="py-24 bg-slate-50" x-data="{ activeCategory: 'all' }">
