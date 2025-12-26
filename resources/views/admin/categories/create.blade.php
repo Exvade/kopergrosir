@@ -5,7 +5,7 @@
 @section('content')
     <div class="max-w-xl mx-auto">
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-            <form action="{{ route('categories.store') }}" method="POST">
+            <form action="{{ route('admin.categories.store') }}" method="POST">
                 @csrf
                 <div class="mb-6">
                     <label class="block text-sm font-bold text-gray-700 mb-2">Nama Kategori</label>
