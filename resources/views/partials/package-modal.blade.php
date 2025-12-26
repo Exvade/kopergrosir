@@ -26,8 +26,10 @@
                 <p class="text-[10px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 flex items-center">
                     <span class="w-8 h-[1px] bg-blue-200 mr-3"></span> Isi Paket:
                 </p>
+                {{-- Di bagian Looping Isi Paket dalam Modal --}}
                 <div class="space-y-3">
-                    <template x-for="item in activePackage.items.split('\n')" :key="item">
+                    {{-- Kita split berdasarkan baris baru (\n) --}}
+                    <template x-for="item in activePackage.items.split(/\r?\n/)" :key="item">
                         <div class="flex items-center text-sm text-slate-600 font-bold" x-show="item.trim() !== ''">
                             <div class="w-5 h-5 rounded-md bg-blue-50 flex items-center justify-center mr-3 shrink-0">
                                 <svg class="w-3 h-3 text-blue-600" fill="none" stroke="currentColor"

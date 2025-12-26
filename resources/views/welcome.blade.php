@@ -467,24 +467,26 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 @foreach ($packages as $package)
                     <div @click="openModal = true; activePackage = { 
-                            name: '{{ $package->name }}', 
+                            name: '{{ addslashes($package->name) }}', 
                             image: '{{ asset('aset-media/' . $package->image) }}', 
-                            items: '{{ $package->package_items }}', 
-                            description: '{{ $package->description }}',
+                            {{-- Gunakan json_encode agar karakter 'enter' tidak merusak javascript --}}
+                            items: {{ json_encode($package->package_items) }}, 
+                            description: {{ json_encode($package->description) }},
                             wa_link: 'https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}'
                         }"
                         class="group bg-white rounded-[3rem] overflow-hidden border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer relative">
 
                         <div class="relative h-80 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('storage/' . $package->image) }}"
+                            <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}"
                                 alt="{{ $package->name }}"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
 
                             <div
                                 class="absolute inset-0 bg-primary/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                                 <span
-                                    class="bg-white text-primary px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">Lihat
-                                    Detail</span>
+                                    class="bg-white text-primary px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl">
+                                    Lihat Detail
+                                </span>
                             </div>
                         </div>
 
