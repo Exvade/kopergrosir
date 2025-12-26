@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- @if (isset($activeBanners) && $activeBanners->count() > 0)
+    @if (isset($activeBanners) && $activeBanners->count() > 0)
         <section class="w-full bg-white pt-8" x-data="{
             active: 0,
             loop() {
@@ -83,80 +83,44 @@
                 @endif
             </div>
         </section>
-    @endif --}}
-    <section id="home" class="relative overflow-hidden bg-white pt-16 pb-24">
-        <div class="absolute -z-10 top-0 right-0 w-[500px] h-[500px] bg-blue-100/40 rounded-full blur-3xl opacity-70 translate-x-1/4 -translate-y-1/4"></div>
-        <div class="absolute -z-10 bottom-0 left-0 w-72 h-72 bg-blue-50 rounded-full blur-3xl opacity-50 -translate-x-1/2"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                
-                <div class="z-10" data-aos="fade-right">
-                    <span
-                        class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-black tracking-[0.2em] text-blue-700 uppercase mb-6 shadow-sm">
-                        Official Distributor
-                    </span>
-    
-                    <h1 class="text-4xl md:text-6xl font-extrabold text-blue-900 leading-[1.1] mb-6 tracking-tight">
-                        Solusi Perjalanan & <br>
-                        <span class="text-blue-600 font-light italic">Ibadah Terpercaya.</span>
-                    </h1>
-    
-                    <p class="text-lg text-blue-800/70 mb-10 max-w-lg leading-relaxed font-medium">
-                        Kami menyediakan berbagai perlengkapan travel mulai dari koper premium hingga paket lengkap Haji &
-                        Umroh dengan standar kualitas distributor resmi.
-                    </p>
-                    
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#katalog"
-                            class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all duration-300 shadow-xl shadow-blue-200 text-center active:scale-95">
-                            Lihat Katalog
-                        </a>
-                        <a href="#paket"
-                            class="px-10 py-4 bg-white text-blue-600 border-2 border-blue-100 rounded-2xl font-bold hover:bg-blue-50 hover:border-blue-200 transition-all duration-300 text-center active:scale-95">
-                            Paket Bundling
-                        </a>
-                    </div>
-    
-                    <div class="mt-12 flex items-center gap-8 border-t border-blue-100 pt-8">
-                        <div>
-                            <p class="text-2xl font-black text-blue-900">10k+</p>
-                            <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Produk Terjual</p>
-                        </div>
-                        <div class="w-px h-8 bg-blue-100"></div>
-                        <div>
-                            <p class="text-2xl font-black text-blue-900">500+</p>
-                            <p class="text-[10px] font-bold text-blue-400 uppercase tracking-widest">Mitra Travel</p>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="relative" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="absolute -left-6 bottom-12 bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl z-20 border border-blue-100 hidden md:block">
-                        <div class="flex items-center gap-3">
-                            <div class="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <p class="text-[10px] font-bold text-blue-400 uppercase tracking-tighter">Quality Assurance</p>
-                                <p class="text-sm font-black text-blue-900">Garansi Distributor</p>
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="relative rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-[12px] border-white group">
-                        <img src="{{ asset('hero-section.JPG') }}" alt="Main Showcase"
-                            class="h-[550px] w-full object-cover transition duration-1000 group-hover:scale-105">
-                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/30 to-transparent"></div>
-                    </div>
-                    
-                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-blue-500 rounded-full -z-10 opacity-30 blur-3xl"></div>
-                </div>
+    @endif
+    <section id="home" class="relative min-h-[85vh] flex items-center overflow-hidden bg-primary">
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?q=80&w=2070&auto=format&fit=crop" 
+             class="w-full h-full object-cover" 
+             alt="Nuansa Ibadah Umroh">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-blue-900/60 to-transparent"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div class="max-w-2xl" data-aos="fade-right">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-blue-600/20 border border-blue-400/30 text-[10px] font-black tracking-[0.2em] text-blue-200 uppercase mb-6 backdrop-blur-md">
+                Gudang Pusat Jakarta
+            </span>
+
+            <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
+                Suplier Koper <br>
+                <span class="text-blue-400 font-light italic">Tangan Pertama.</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-blue-100/80 mb-10 leading-relaxed font-medium">
+                Sedia koper umroh stok melimpah, harga langsung pabrik. <br class="hidden md:block"> 
+                Bisa custom logo untuk biro perjalanan Anda.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+                <a href="#katalog"
+                    class="px-10 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-500 transition-all duration-300 shadow-xl shadow-blue-600/40 text-center active:scale-95">
+                    Lihat Katalog
+                </a>
+                <a href="#paket"
+                    class="px-10 py-4 bg-white/10 backdrop-blur-md text-white border border-white/20 rounded-2xl font-bold hover:bg-white/20 transition-all duration-300 text-center active:scale-95">
+                    Paket Bundling
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 
@@ -227,12 +191,10 @@
                         <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em]">Authorized Partner</span>
                         <h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
                             Distributor Utama <br>
-                            <span class="text-blue-600 font-light italic">Travel & Pilgrimage Kit.</span>
+                            <span class="text-blue-600 font-light italic">Artlyn Kreasi Mandiri.</span>
                         </h2>
                         <p class="text-slate-500 leading-relaxed text-lg">
-                            KoperGrosir hadir sebagai mitra strategis bagi biro perjalanan Haji & Umroh serta toko retail
-                            perlengkapan travel. Kami berdedikasi untuk memberikan produk terbaik dengan proses pengadaan yang
-                            transparan dan profesional.
+                            Kami bukan sekadar menjual koper. Kami adalah mitra pengadaan yang memastikan biro Anda punya stok koper kuat, sablon logo yang rapi, dan pengiriman yang tidak pernah telat.
                         </p>
                     </div>
     
@@ -302,13 +264,12 @@
                     </span>
                     
                     <h2 class="text-3xl md:text-5xl font-black text-blue-900 leading-tight mb-6 tracking-tight">
-                        Dibalik Kualitas <br>
-                        <span class="text-blue-600 font-light italic">Koper Premium Kami.</span>
+                        Standar Pabrik <br>
+                        <span class="text-blue-600 font-light italic">Bukan Koper Pasaran.</span>
                     </h2>
                     
                     <p class="text-blue-800/60 text-lg leading-relaxed max-w-xl font-medium">
-                        Kami tidak hanya menjual, kami memastikan setiap tahap produksi—mulai dari pemilihan material hingga
-                        proses pengecatan—melewati pengawasan ketat untuk menghasilkan produk yang tangguh dan estetik.
+                       Setiap koper melewati uji banting dan pengecatan presisi tinggi. Kami memastikan bahan fiber yang digunakan punya kelenturan pas agar tidak mudah pecah saat masuk bagasi pesawat.
                     </p>
     
                     <div class="grid grid-cols-2 gap-4 mt-10">
@@ -687,7 +648,7 @@
                         </svg>
                     </button>
                     <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 3" x-collapse x-cloak>
-                        Kami melayani pembelian mulai dari satu lusin (12 pcs) untuk koper standar. Untuk mendapatkan harga grosir terbaik atau pengadaan instansi dalam jumlah kontainer, silakan hubungi admin kami.
+                        Kami melayani pembelian mulai dari 50 pcs untuk koper standar. Untuk mendapatkan harga grosir terbaik atau pengadaan instansi dalam jumlah kontainer, silakan hubungi admin kami.
                     </div>
                 </div>
     
