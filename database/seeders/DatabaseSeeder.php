@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Admin',
             'email' => 'admin@kopergrosir.com',
-            'password' => bcrypt('K0p3rgr0sir123'), // Ganti dengan password pilihanmu
+            'password' => bcrypt('elangindoselaras2025'), // Ganti dengan password pilihanmu
         ]);
     }
 }

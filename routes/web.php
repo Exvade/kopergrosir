@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\DashboardController;
 
 // --- Route Publik ---
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -23,9 +24,8 @@ Route::controller(AuthController::class)->group(function () {
 // Opsional: Tambahkan middleware 'isAdmin' jika ada peran user berbeda
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    // Pastikan letaknya di dalam group middleware ['auth']
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Resource Routes
     Route::resource('banners', BannerController::class);

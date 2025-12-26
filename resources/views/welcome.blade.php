@@ -447,7 +447,14 @@
     </section>
 
 
-    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden" x-data="{ openModal: false, activePackage: {} }">
+    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden" x-data="{ openModal: false, activePackage: {}, toggleScroll(isModalOpen) {
+        if (isModalOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    } }"
+        x-init="$watch('openModal', value => toggleScroll(value))">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
             style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
 
