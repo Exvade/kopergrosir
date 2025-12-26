@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="max-w-4xl mx-auto">
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data"
             class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
