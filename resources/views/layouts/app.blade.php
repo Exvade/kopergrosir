@@ -48,6 +48,7 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
 
         /* Update Shadow to Blue Tint */
