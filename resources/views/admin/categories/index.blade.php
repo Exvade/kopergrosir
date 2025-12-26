@@ -36,7 +36,7 @@
                             <td class="px-6 py-4 text-sm text-gray-600">{{ $category->products->count() }} Produk</td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center space-x-3">
-                                    <a href="{{ route('categories.edit', $category->id) }}"
+                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
                                         class="text-blue-600 hover:text-blue-800">Edit</a>
                                     <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
                                         id="delete-form-{{ $category->id }}">

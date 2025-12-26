@@ -61,7 +61,7 @@
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <div class="flex justify-center gap-2">
-                                    <a href="{{ route('packages.edit', $package->id) }}"
+                                    <a href="{{ route('admin.packages.edit', $package->id) }}"
                                         class="p-2 text-blue-600 hover:bg-blue-50 rounded-xl transition-colors">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

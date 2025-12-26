@@ -79,7 +79,7 @@
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex justify-center space-x-2">
-                                    <a href="{{ route('products.edit', $product->id) }}"
+                                    <a href="{{ route('admin.products.edit', $product->id) }}"
                                         class="p-2 text-blue-600 hover:bg-blue-50 rounded-lg transition-colors">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                     <div class="flex space-x-2 pt-2">
-                        <a href="{{ route('products.edit', $product->id) }}"
+                        <a href="{{ route('admin.products.edit', $product->id) }}"
                             class="flex-1 text-center py-2 bg-gray-50 text-blue-600 border border-blue-100 rounded-lg text-sm font-bold active:bg-blue-50">Edit</a>
                         <button type="button" onclick="confirmDelete({{ $product->id }})"
                             class="flex-1 py-2 bg-red-50 text-red-600 border border-red-100 rounded-lg text-sm font-bold active:bg-red-100">Hapus</button>
