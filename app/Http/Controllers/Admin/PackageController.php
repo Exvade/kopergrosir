@@ -39,7 +39,7 @@ class PackageController extends Controller
 
         Package::create($data); // Simpan ke tabel packages
 
-        return redirect()->route('packages.index')->with('success', 'Paket Berhasil Ditambahkan!');
+        return redirect()->route('admin.packages.index')->with('success', 'Paket Berhasil Ditambahkan!');
     }
 
     public function edit(Package $package)
@@ -69,7 +69,7 @@ class PackageController extends Controller
 
         $package->update($data);
 
-        return redirect()->route('packages.index')->with('success', 'Paket berhasil diperbarui!');
+        return redirect()->route('admin.packages.index')->with('success', 'Paket berhasil diperbarui!');
     }
 
     public function destroy(Package $package)
@@ -81,6 +81,6 @@ class PackageController extends Controller
 
         $package->delete();
 
-        return redirect()->route('packages.index')->with('success', 'Paket berhasil dihapus!');
+        return redirect()->route('admin.packages.index')->with('success', 'Paket berhasil dihapus!');
     }
 }
