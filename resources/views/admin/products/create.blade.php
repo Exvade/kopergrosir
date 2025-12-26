@@ -19,19 +19,13 @@
                             </div>
                         </div>
                     </div>
-                    <label
-                        class="flex items-center space-x-3 cursor-pointer p-4 bg-gray-50 rounded-2xl border border-gray-100">
-                        <input type="checkbox" name="is_featured" value="1" class="w-5 h-5 text-slate-900 rounded">
-                        <span class="text-sm font-bold text-slate-700">Tampilkan di Highlight</span>
-                    </label>
                 </div>
 
                 <div class="space-y-5">
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Nama Produk</label>
                         <input type="text" name="name"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-slate-900 outline-none"
-                            required>
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none" required>
                     </div>
                     <div>
                         <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Kategori</label>
@@ -43,23 +37,12 @@
                             @endforeach
                         </select>
                     </div>
-                    <div>
-                        <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Harga (Rp)</label>
-                        <input type="number" name="price"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none" required>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="size" placeholder="Ukuran (Inch)"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none">
-                        <input type="text" name="material" placeholder="Bahan"
-                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none">
-                    </div>
+                    <label
+                        class="flex items-center space-x-3 cursor-pointer p-4 bg-gray-50 rounded-2xl border border-gray-100 mt-4">
+                        <input type="checkbox" name="is_featured" value="1" class="w-5 h-5 text-slate-900 rounded">
+                        <span class="text-sm font-bold text-slate-700">Tampilkan di Highlight</span>
+                    </label>
                 </div>
-            </div>
-            <div class="mt-6">
-                <label class="block text-xs font-bold text-gray-400 uppercase mb-2">Deskripsi</label>
-                <textarea name="description" rows="4"
-                    class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl outline-none" required></textarea>
             </div>
             <button type="submit"
                 class="mt-8 w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition">Simpan
