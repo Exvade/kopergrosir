@@ -9,23 +9,33 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\BannerController;
 
-// Route Login
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/', [HomeController::class, 'index']);
+// --- Route Publik ---
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-// Route Admin (Diproteksi Middleware Auth)
-Route::middleware(['auth'])->prefix('admin')->group(function () {
+// --- Route Otentikasi ---
+Route::controller(AuthController::class)->group(function () {
+    Route::get('/login', 'showLogin')->name('login');
+    Route::post('/login', 'login');
+    Route::post('/logout', 'logout')->name('logout');
+});
+
+// --- Route Admin (Diproteksi Middleware Auth) ---
+// Opsional: Tambahkan middleware 'isAdmin' jika ada peran user berbeda
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
-    });
+    })->name('dashboard');
+
+    // Resource Routes
     Route::resource('banners', BannerController::class);
-    // Route untuk Produk Satuan (Koper, Bantal, dll)
     Route::resource('products', ProductController::class);
-    // Route khusus untuk Produk Paket (Bundling)
     Route::resource('packages', PackageController::class);
-    Route::get('/settings', [SettingController::class, 'index'])->name('admin.settings.index');
-    Route::put('/settings', [SettingController::class, 'update'])->name('admin.settings.update');
     Route::resource('categories', CategoryController::class);
+
+    // Settings Routes
+    Route::controller(SettingController::class)->group(function () {
+        Route::get('/settings', 'index')->name('settings.index');
+        Route::put('/settings', 'update')->name('settings.update');
+    });
 });
