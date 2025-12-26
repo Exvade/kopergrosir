@@ -16,7 +16,7 @@
                     @enderror
                 </div>
                 <div class="flex justify-end gap-3">
-                    <a href="{{ route('categories.index') }}"
+                    <a href="{{ route('admin.categories.index') }}"
                         class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Batal</a>
                     <button type="submit"
                         class="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 transition">Simpan

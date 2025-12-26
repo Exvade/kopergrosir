@@ -110,7 +110,7 @@
                     </svg>
                     Paket Bundling
                 </a>
-                <a href="{{ route('categories.index') }}"
+                <a href="{{ route('admin.categories.index') }}"
                     class="flex items-center p-3 {{ request()->is('admin/categories*') ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/50' : 'text-gray-300 hover:bg-slate-800' }} rounded-lg transition-all group">
                     <svg class="w-5 h-5 mr-3 {{ request()->is('admin/categories*') ? 'text-white' : 'text-gray-400 group-hover:text-blue-400' }}"
                         fill="none" stroke="currentColor" viewBox="0 0 24 24">

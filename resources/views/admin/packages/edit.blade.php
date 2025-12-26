@@ -5,7 +5,7 @@
 @section('content')
     <div class="max-w-4xl mx-auto">
         <div class="mb-8">
-            <a href="{{ route('packages.index') }}"
+            <a href="{{ route('admin.packages.index') }}"
                 class="inline-flex items-center text-blue-600 font-bold text-sm hover:underline group">
                 <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
@@ -15,7 +15,7 @@
             </a>
         </div>
 
-        <form action="{{ route('packages.update', $package->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin.packages.update', $package->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-blue-50">
             @csrf
             @method('PUT')
