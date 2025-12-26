@@ -593,23 +593,8 @@
                             <div class="absolute top-3 left-3">
                                 <span
                                     class="bg-primary/90 backdrop-blur-md text-white text-[9px] font-black px-3 py-1.5 rounded-xl uppercase tracking-widest border border-white/20">
-                                    {{ $product->category->name ?? 'Retail' }}
+                                    {{ $product->category->name ?? 'Katalog' }}
                                 </span>
-                            </div>
-
-                            <div class="absolute bottom-3 right-3 flex flex-col items-end gap-1.5 pointer-events-none">
-                                @if (!$product->is_package && $product->size)
-                                    <span
-                                        class="bg-white/95 backdrop-blur shadow-lg text-primary text-[10px] font-black px-3 py-1 rounded-lg border border-blue-50">
-                                        {{ $product->size }}
-                                    </span>
-                                @endif
-                                @if ($product->material)
-                                    <span
-                                        class="bg-white/95 backdrop-blur shadow-lg text-primary text-[10px] font-black px-3 py-1 rounded-lg border border-blue-50 uppercase truncate max-w-[90px]">
-                                        {{ $product->material }}
-                                    </span>
-                                @endif
                             </div>
                         </div>
 
@@ -619,21 +604,19 @@
                                 {{ $product->name }}
                             </h4>
 
-                            <div class="mt-auto flex items-end justify-between gap-2">
+                            <div class="mt-auto flex items-center justify-between gap-2">
                                 <div class="flex flex-col">
                                     <span
-                                        class="text-[9px] font-black text-secondary uppercase tracking-[0.2em] leading-none mb-1.5">
-                                        Ready Stock
+                                        class="text-[9px] font-black text-secondary uppercase tracking-[0.2em] leading-none mb-1">
+                                        Ready Stok
                                     </span>
-                                    <div class="flex items-baseline font-black text-primary tracking-tighter">
-                                        <span class="text-xs mr-0.5 text-secondary">Rp</span>
-                                        <span class="text-lg md:text-2xl leading-none">
-                                            {{ number_format($product->price, 0, ',', '.') }}
-                                        </span>
-                                    </div>
+                                    <span class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">
+                                        Grosir Tangan Pertama
+                                    </span>
                                 </div>
 
-                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
+                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya ingin tanya stok untuk: ' . $product->name) }}"
+                                    target="_blank"
                                     class="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center shadow-xl shadow-blue-900/10 hover:bg-secondary transition-all duration-300 active:scale-90 flex-shrink-0 group/btn">
                                     <svg class="w-6 h-6 transform group-hover/btn:scale-110 transition-transform"
                                         fill="currentColor" viewBox="0 0 24 24">
