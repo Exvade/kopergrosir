@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="max-w-4xl mx-auto">
+        @if ($errors->any())
+            <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+                <ul class="list-disc list-inside text-sm font-bold">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data"
             class="bg-white rounded-3xl p-8 shadow-sm border border-gray-100">
             @csrf
