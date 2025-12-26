@@ -86,8 +86,7 @@
     @endif
     <section id="home" class="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-950">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1605553378313-22d0dc541393?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                class="w-full h-full object-cover" alt="Nuansa Ibadah Umroh">
+            <img src="{{ asset('hero-section1.JPG') }}" class="w-full h-full object-cover" alt="Nuansa Ibadah Umroh">
 
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/80 to-blue-900/20"></div>
         </div>
