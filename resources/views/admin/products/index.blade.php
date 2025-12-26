@@ -87,7 +87,7 @@
                                             </path>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST"
+                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
                                         id="delete-form-{{ $product->id }}">
                                         @csrf @method('DELETE')
                                         <button type="button" onclick="confirmDelete({{ $product->id }})"

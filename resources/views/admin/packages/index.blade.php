@@ -69,7 +69,7 @@
                                             </path>
                                         </svg>
                                     </a>
-                                    <form action="{{ route('packages.destroy', $package->id) }}" method="POST"
+                                    <form action="{{ route('admin.packages.destroy', $package->id) }}" method="POST"
                                         id="delete-form-{{ $package->id }}">
                                         @csrf @method('DELETE')
                                         <button type="button" onclick="confirmDelete({{ $package->id }})"

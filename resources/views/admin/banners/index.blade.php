@@ -129,8 +129,8 @@
                                                         </path>
                                                     </svg>
                                                 </button>
-                                                <form action="{{ route('banners.destroy', $banner->id) }}" method="POST"
-                                                    id="del-{{ $banner->id }}">
+                                                <form action="{{ route('admin.banners.destroy', $banner->id) }}"
+                                                    method="POST" id="del-{{ $banner->id }}">
                                                     @csrf @method('DELETE')
                                                     <button type="button" onclick="confirmDelete({{ $banner->id }})"
                                                         class="p-2 text-slate-300 hover:text-red-500 transition">

@@ -38,7 +38,7 @@
                                 <div class="flex justify-center space-x-3">
                                     <a href="{{ route('admin.categories.edit', $category->id) }}"
                                         class="text-blue-600 hover:text-blue-800">Edit</a>
-                                    <form action="{{ route('categories.destroy', $category->id) }}" method="POST"
+                                    <form action="{{ route('admin.categories.destroy', $category->id) }}" method="POST"
                                         id="delete-form-{{ $category->id }}">
                                         @csrf @method('DELETE')
                                         <button type="button" onclick="confirmDelete({{ $category->id }})"
