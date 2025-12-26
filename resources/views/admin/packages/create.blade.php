@@ -16,7 +16,7 @@
             </a>
         </div>
 
-        <form action="{{ route('packages.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin.packages.store') }}" method="POST" enctype="multipart/form-data"
             class="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-sm border border-blue-50">
             @csrf
 
