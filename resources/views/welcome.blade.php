@@ -256,7 +256,7 @@
 
     <section class="py-24 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20 overflow-x-hidden">
                 <div data-aos="fade-right">
                     <span
                         class="inline-block px-4 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[10px] font-black tracking-[0.2em] text-blue-600 uppercase mb-6">
