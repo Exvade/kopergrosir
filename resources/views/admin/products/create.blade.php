@@ -49,4 +49,24 @@
                 Produk</button>
         </form>
     </div>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            const preview = document.getElementById('image-preview');
+            const placeholder = document.getElementById('placeholder');
+
+            reader.onload = function() {
+                preview.src = reader.result;
+                preview.classList.remove('hidden'); // Menampilkan gambar
+                if (placeholder) {
+                    placeholder.classList.add('hidden'); // Menyembunyikan teks petunjuk
+                }
+            };
+
+            if (input.files && input.files[0]) {
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 @endsection
