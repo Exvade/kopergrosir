@@ -56,7 +56,7 @@
             </p>
 
             <div class="flex gap-4">
-                <a href="{{ route('products.index') }}"
+                <a href="{{ route('admin.products.index') }}"
                     class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium">
                     Kelola Produk
                 </a>

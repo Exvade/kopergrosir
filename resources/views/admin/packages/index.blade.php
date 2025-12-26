@@ -9,7 +9,7 @@
             <p class="text-sm text-slate-500 mt-1">Kelola paket perlengkapan travel bundling Anda.</p>
         </div>
         <div>
-            <a href="{{ route('packages.create') }}"
+            <a href="{{ route('admin.packages.create') }}"
                 class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition flex items-center shadow-lg shadow-blue-900/10 active:scale-95">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">

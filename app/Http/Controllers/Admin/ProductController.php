@@ -53,7 +53,7 @@ class ProductController extends Controller
         }
 
         Product::create($data);
-        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
     /**
      * Menampilkan form edit koper.
@@ -90,7 +90,7 @@ class ProductController extends Controller
         }
 
         $product->update($data);
-        return redirect()->route('products.index')->with('success', 'Produk berhasil diperbarui!');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
     /**
@@ -103,6 +103,6 @@ class ProductController extends Controller
         }
 
         $product->delete();
-        return redirect()->route('products.index')->with('success', 'Koper berhasil dihapus dari katalog!');
+        return redirect()->route('admin.products.index')->with('success', 'Koper berhasil dihapus dari katalog!');
     }
 }

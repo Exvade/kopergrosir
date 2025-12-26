@@ -9,7 +9,7 @@
                 <h3 class="text-2xl font-bold text-gray-800">Kategori Produk</h3>
                 <p class="text-sm text-gray-500">Kelompokkan produk agar mudah ditemukan oleh pelanggan.</p>
             </div>
-            <a href="{{ route('categories.create') }}"
+            <a href="{{ route('admin.categories.create') }}"
                 class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-medium flex items-center shadow-sm">
                 <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>

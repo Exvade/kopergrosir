@@ -10,7 +10,7 @@
                 <div class="bg-white rounded-3xl shadow-sm border border-gray-200 p-6 sticky top-24">
                     <h3 class="text-lg font-bold text-slate-900 mb-4">Upload Banner Baru</h3>
 
-                    <form action="{{ route('banners.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('admin.banners.store') }}" method="POST" enctype="multipart/form-data"
                         x-data="{ uploading: false, previewUrl: null }" @submit="uploading = true">
                         @csrf
                         <div class="space-y-5">
