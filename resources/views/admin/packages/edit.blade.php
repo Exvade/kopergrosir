@@ -31,7 +31,7 @@
                                 class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
                                 onchange="previewImage(event)">
 
-                            <img id="image-preview" src="{{ asset('storage/' . $package->image) }}"
+                            <img id="image-preview" src="{{ asset('aset-media/' . $package->image) }}"
                                 class="mx-auto max-h-72 rounded-2xl shadow-lg relative z-10">
 
                             <div id="placeholder" class="hidden py-12">
