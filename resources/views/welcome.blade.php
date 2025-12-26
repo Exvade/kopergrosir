@@ -181,7 +181,7 @@
         </div>
     </section>
 
-    <section id="about" class="py-24 bg-white">
+    <section id="about" class="py-24 bg-white overflow-x-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
                 <div class="relative" data-aos="fade-right">
