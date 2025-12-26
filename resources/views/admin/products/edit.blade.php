@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="max-w-4xl mx-auto">
-        <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data"
             class="bg-white rounded-3xl p-8 shadow-sm border border-gray-200">
             @csrf
             @method('PUT')

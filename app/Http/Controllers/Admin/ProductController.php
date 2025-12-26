@@ -4,35 +4,25 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
-use App\Models\Category; // Tambahkan ini
 
 class ProductController extends Controller
 {
-    /**
-     * Menampilkan daftar koper.
-     */
     public function index()
     {
-        // Menggunakan with('category') agar query lebih efisien
         $products = Product::with('category')->latest()->get();
         return view('admin.products.index', compact('products'));
     }
 
-    /**
-     * Menampilkan form tambah koper.
-     */
     public function create()
     {
-        $categories = Category::all(); // Gunakan model Category yang diimpor
+        $categories = Category::all();
         return view('admin.products.create', compact('categories'));
     }
 
-    /**
-     * Memproses penyimpanan koper baru.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -41,32 +31,25 @@ class ProductController extends Controller
             'image'       => 'required|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $data = [
-            'category_id' => $request->category_id,
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name),
-            'is_featured' => $request->has('is_featured'),
-        ];
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        $data['is_featured'] = $request->has('is_featured');
 
         if ($request->hasFile('image')) {
+            // Mengikuti pola Package: simpan ke storage/app/public/products
             $data['image'] = $request->file('image')->store('products', 'public');
         }
 
         Product::create($data);
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
-    /**
-     * Menampilkan form edit koper.
-     */
+
     public function edit(Product $product)
     {
-        $categories = Category::all(); // Gunakan model Category yang diimpor
+        $categories = Category::all();
         return view('admin.products.edit', compact('product', 'categories'));
     }
 
-    /**
-     * Memproses perubahan data koper.
-     */
     public function update(Request $request, Product $product)
     {
         $request->validate([
@@ -75,14 +58,12 @@ class ProductController extends Controller
             'image'       => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
 
-        $data = [
-            'category_id' => $request->category_id,
-            'name'        => $request->name,
-            'slug'        => Str::slug($request->name),
-            'is_featured' => $request->has('is_featured'),
-        ];
+        $data = $request->all();
+        $data['slug'] = Str::slug($request->name);
+        $data['is_featured'] = $request->has('is_featured');
 
         if ($request->hasFile('image')) {
+            // Hapus foto lama dari storage jika ada
             if ($product->image && Storage::disk('public')->exists($product->image)) {
                 Storage::disk('public')->delete($product->image);
             }
@@ -93,16 +74,14 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
-    /**
-     * Menghapus produk koper.
-     */
     public function destroy(Product $product)
     {
+        // Hapus foto dari storage sebelum hapus data
         if ($product->image && Storage::disk('public')->exists($product->image)) {
             Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();
-        return redirect()->route('admin.products.index')->with('success', 'Koper berhasil dihapus dari katalog!');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus!');
     }
 }
