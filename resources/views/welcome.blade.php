@@ -468,7 +468,7 @@
                 @foreach ($packages as $package)
                     <div @click="openModal = true; activePackage = { 
                             name: '{{ $package->name }}', 
-                            image: '{{ asset('storage/' . $package->image) }}', 
+                            image: '{{ asset('aset-media/' . $package->image) }}', 
                             items: '{{ $package->package_items }}', 
                             description: '{{ $package->description }}',
                             wa_link: 'https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode($waMessage->value . ' Saya tertarik dengan ' . $package->name) }}'

@@ -38,7 +38,7 @@
                                 <div class="flex items-center gap-4">
                                     <div
                                         class="h-16 w-16 flex-shrink-0 rounded-2xl bg-slate-100 overflow-hidden border border-blue-100 shadow-sm">
-                                        <img src="{{ asset('storage/' . $package->image) }}" alt="{{ $package->name }}"
+                                        <img src="{{ asset('aset-media/' . $package->image) }}" alt="{{ $package->name }}"
                                             class="h-full w-full object-cover">
                                     </div>
                                     <div>
