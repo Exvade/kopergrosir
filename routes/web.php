@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Models\Product;
+use App\Models\Package;
 
 // --- Route Publik ---
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -18,6 +20,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/login', 'showLogin')->name('login');
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name('logout');
+});
+Route::get('/sitemap.xml', function () {
+    $products = Product::all();
+    $packages = Package::all();
+
+    // Mengembalikan view dengan header XML
+    return Response::view('sitemap', [
+        'products' => $products,
+        'packages' => $packages
+    ])->header('Content-Type', 'text/xml');
 });
 
 // --- Route Admin (Diproteksi Middleware Auth) ---
