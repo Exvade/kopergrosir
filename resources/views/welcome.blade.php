@@ -29,7 +29,7 @@
 
                             <{!! $hasLink ? 'a href="' . $banner->link . '"' : 'div' !!} class="block w-full h-full group/item">
 
-                                <img src="{{ asset('storage/' . $banner->image) }}" alt="{{ $banner->title }}"
+                                <img src="{{ asset('aset-media/' . $banner->image) }}" alt="{{ $banner->title }}"
                                     class="w-full h-full object-cover object-center transition duration-[3000ms] group-hover/item:scale-105">
 
                                 <div
@@ -187,7 +187,8 @@
                     <div
                         class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-8 border-slate-50">
                         <img src="{{ asset('warehouse.JPG') }}" alt="Gudang Distributor"
-                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition duration-700">
+                            class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition duration-700"
+                            loading="lazy">
                     </div>
                     <div
                         class="absolute -bottom-6 -right-6 bg-primary text-white p-8 rounded-[2.5rem] shadow-2xl border-4 border-white hidden md:block">
@@ -447,13 +448,17 @@
     </section>
 
 
-    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden" x-data="{ openModal: false, activePackage: {}, toggleScroll(isModalOpen) {
-        if (isModalOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = 'auto';
+    <section id="paket" class="py-24 bg-slate-50 relative overflow-hidden" x-data="{
+        openModal: false,
+        activePackage: {},
+        toggleScroll(isModalOpen) {
+            if (isModalOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
         }
-    } }"
+    }"
         x-init="$watch('openModal', value => toggleScroll(value))">
         <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
             style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
@@ -618,8 +623,8 @@
                     </button>
                     <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 1"
                         x-collapse x-cloak>
-                        Tentu bisa. Kami menyediakan layanan sablon atau grafir logo instansi/biro travel Anda dengan
-                        minimal pemesanan tertentu untuk menjaga kualitas produksi.
+                        Tentu bisa. Kami memfasilitasi custom logo emblem instansi/biro travel Anda dengan
+                        minimal pemesanan.
                     </div>
                 </div>
 
@@ -641,8 +646,8 @@
                     </button>
                     <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 2"
                         x-collapse x-cloak>
-                        Untuk stok ready, pengiriman H+1. Untuk custom atau pesanan sangat besar, estimasi 7-14 hari kerja
-                        tergantung antrian produksi di gudang kami.
+                        Untuk custom dan pesanan, estimasi 7-14 hari kerja
+                        tergantung antrian produksi di Pabrik kami.
                     </div>
                 </div>
 
@@ -664,8 +669,9 @@
                     </button>
                     <div class="px-6 pb-6 text-slate-500 text-xs leading-relaxed font-medium" x-show="selected === 3"
                         x-collapse x-cloak>
-                        Kami melayani pembelian mulai dari 50 pcs untuk koper standar. Untuk mendapatkan harga grosir
-                        terbaik atau pengadaan instansi dalam jumlah kontainer, silakan hubungi admin kami.
+                        Kami melayani pemesanan mulai dari 50 pcs untuk koper dan paket perlengkapan Umroh dan Haji. Untuk
+                        mendapatkan harga grosir terbaik, pengadaan instansi dan retail, silakan hubungi
+                        admin kami.
                     </div>
                 </div>
 

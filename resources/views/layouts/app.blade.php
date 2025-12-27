@@ -236,7 +236,7 @@
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
                             <span class="text-sm text-slate-500 leading-relaxed">
-                                Jl. Anggrek Rosliana VII No.2, Palmerah, Jakarta Barat, 11480
+                                Jl. Anggrek Rosliana VII No.2, Kemanggisan, Palmerah, Jakarta Barat, 11480
                             </span>
                         </div>
 
