@@ -207,7 +207,7 @@
                         </h2>
                         <p class="text-slate-500 leading-relaxed text-lg">
                             Kami bukan sekadar menjual koper. Kami adalah mitra pengadaan yang memastikan biro Anda punya
-                            stok koper kuat, sablon logo yang rapi, dan pengiriman yang tidak pernah telat.
+                            stok koper kuat, emblem logo yang rapi, dan pengiriman yang tidak pernah telat.
                         </p>
                     </div>
 
