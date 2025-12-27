@@ -21,15 +21,16 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/login', 'login');
     Route::post('/logout', 'logout')->name('logout');
 });
+
 Route::get('/sitemap.xml', function () {
     $products = Product::all();
     $packages = Package::all();
 
-    // Mengembalikan view dengan header XML
-    return Response::view('sitemap', [
-        'products' => $products,
-        'packages' => $packages
-    ])->header('Content-Type', 'text/xml');
+    // Menggunakan render() dan trim() untuk membuang spasi kosong di awal/akhir
+    $content = view('sitemap', compact('products', 'packages'))->render();
+    
+    return response(trim($content), 200)
+        ->header('Content-Type', 'text/xml');
 });
 
 // --- Route Admin (Diproteksi Middleware Auth) ---

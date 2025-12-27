@@ -1,27 +1,24 @@
-<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?>'; ?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <url>
-        <loc>{{ url('/') }}</loc>
-        <lastmod>{{ \Carbon\Carbon::now()->toAtomString() }}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-    </url>
-
-    @foreach ($products as $product)
-        <url>
-            <loc>{{ url('/') }}/#katalog</loc>
-            <lastmod>{{ $product->updated_at->toAtomString() }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.8</priority>
-        </url>
-    @endforeach
-
-    @foreach ($packages as $package)
-        <url>
-            <loc>{{ url('/') }}/#paket</loc>
-            <lastmod>{{ $package->updated_at->toAtomString() }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.9</priority>
-        </url>
-    @endforeach
-</urlset>
+<?php echo '<?xml version="1.0" encoding="UTF-8"?>'; ?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+  <loc>{{ url('/') }}</loc>
+  <lastmod>{{ \Carbon\Carbon::now()->toAtomString() }}</lastmod>
+  <changefreq>daily</changefreq>
+  <priority>1.0</priority>
+  </url>
+  @foreach ($products as $product)
+  <url>
+  <loc>{{ url('/') }}/#katalog</loc>
+  <lastmod>{{ $product->updated_at->toAtomString() }}</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+  </url>
+  @endforeach
+  @foreach ($packages as $package)
+  <url>
+  <loc>{{ url('/') }}/#paket</loc>
+  <lastmod>{{ $package->updated_at->toAtomString() }}</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.9</priority>
+  </url>
+  @endforeach
+  </urlset>
