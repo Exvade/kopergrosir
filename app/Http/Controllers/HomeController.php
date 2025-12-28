@@ -13,13 +13,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // 1. Ambil Pengaturan WhatsApp (dengan Fallback Default jika database kosong)
-        $waNumber = Setting::where('key', 'whatsapp_number')->first() 
-                    ?? (object) ['value' => '628123456789']; 
-    
-        $waMessage = Setting::where('key', 'whatsapp_message')->first() 
-                     ?? (object) ['value' => 'Halo KoperGrosir, saya ingin bertanya tentang produk Anda...'];
-    
+        $waNumber = Setting::where('key', 'wa_number')->first() 
+        ?? (object) ['value' => '628123456789']; 
+
+        $waMessage = Setting::where('key', 'wa_message')->first() 
+         ?? (object) ['value' => 'Halo KoperGrosir, saya ingin bertanya tentang produk Anda...'];
         // 2. Ambil Banner yang Aktif
         $activeBanners = Banner::where('is_active', true)->latest()->get();
 
