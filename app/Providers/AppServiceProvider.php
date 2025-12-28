@@ -21,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        view()->share('waNumber', \App\Models\Setting::where('key', 'wa_number')->first());
+        view()->share('waMessage', \App\Models\Setting::where('key', 'wa_message')->first());
     }
 }

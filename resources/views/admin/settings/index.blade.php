@@ -10,6 +10,16 @@
                 <p class="text-xs text-gray-500">Atur nomor tujuan dan template pesan otomatis.</p>
             </div>
 
+            @if ($errors->any())
+                <div class="mb-4 p-4 bg-red-50 border-l-4 border-red-500 text-red-700">
+                    <ul class="list-disc list-inside text-sm">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             <form action="{{ route('admin.settings.update') }}" method="POST" class="p-6 space-y-6">
                 @csrf
                 @method('PUT')
