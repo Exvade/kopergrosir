@@ -99,7 +99,7 @@
                 </span>
 
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
-                    Suplier Koper <br>
+                    Supplier Koper <br>
                     <span class="text-blue-300 font-light italic">Tangan Pertama.</span>
                 </h1>
 
