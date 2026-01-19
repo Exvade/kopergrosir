@@ -341,7 +341,8 @@
                 <div class="grid grid-cols-2 grid-rows-2 gap-4 h-[550px]" data-aos="fade-left">
                     <div
                         class="col-span-2 row-span-1 relative rounded-[2.5rem] overflow-hidden group border border-blue-50 shadow-2xl shadow-blue-900/10">
-                        <video autoplay muted loop playsinline class="w-full h-full object-cover">
+                        <video autoplay muted loop playsinline aria-label="Video finishing cat koper"
+                            class="w-full h-full object-cover">
                             <source src="{{ asset('video-pengecatan.MP4') }}" type="video/mp4">
                         </video>
                         <div class="absolute inset-0 bg-blue-900/20 group-hover:bg-transparent transition duration-500">
@@ -388,7 +389,8 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank" data-aos="fade-up"
+                <a aria-label="Hubungi Admin via WhatsApp untuk cek stok"
+                    href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank" data-aos="fade-up"
                     data-aos-delay="100"
                     class="bg-accent/30 p-8 rounded-[2.5rem] border border-blue-50 flex flex-col items-center text-center group hover:bg-white hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500">
                     <div
@@ -582,12 +584,13 @@
                                         Ready Stok
                                     </span>
                                     <span
-                                        class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-tighter truncate">
+                                        class="text-[9px] md:text-[10px] font-bold text-slate-600 uppercase tracking-tighter truncate">
                                         Grosir Tangan Pertama
                                     </span>
                                 </div>
 
-                                <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya ingin tanya stok untuk: ' . $product->name) }}"
+                                <a aria-label="Hubungi Admin via WhatsApp untuk cek stok"
+                                    href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya ingin tanya stok untuk: ' . $product->name) }}"
                                     target="_blank"
                                     class="w-9 h-9 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-blue-900/10 hover:bg-secondary transition-all duration-300 active:scale-90 flex-shrink-0 group/btn">
                                     <svg class="w-4 h-4 md:w-6 md:h-6 transform group-hover/btn:scale-110 transition-transform"
@@ -858,7 +861,8 @@
                         toko retail Anda hari ini.
                     </p>
 
-                    <a href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya tertarik untuk menjadi mitra distributor.') }}"
+                    <a aria-label="Hubungi Admin via WhatsApp untuk cek stok"
+                        href="https://wa.me/{{ $waNumber->value ?? '' }}?text={{ urlencode('Halo KoperGrosir, saya tertarik untuk menjadi mitra distributor.') }}"
                         target="_blank"
                         class="group inline-flex items-center px-12 py-5 bg-white text-primary font-black rounded-2xl hover:bg-secondary hover:text-white transition-all duration-300 shadow-xl active:scale-95 overflow-hidden">
                         <span class="uppercase tracking-widest text-xs">Mulai Kemitraan Sekarang</span>
@@ -890,7 +894,8 @@
             </span>
         </a>
 
-        <a href="https://wa.me/{{ $waNumber->value ?? '' }}" target="_blank"
+        <a aria-label="Hubungi Admin via WhatsApp untuk cek stok" href="https://wa.me/{{ $waNumber->value ?? '' }}"
+            target="_blank"
             class="bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition duration-300 hover:scale-110 active:scale-90 group relative flex items-center justify-center">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
