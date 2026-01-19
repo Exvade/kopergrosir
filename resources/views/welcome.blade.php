@@ -29,7 +29,8 @@
 
                             <{!! $hasLink ? 'a href="' . $banner->link . '"' : 'div' !!} class="block w-full h-full group/item">
 
-                                <img src="{{ asset('aset-media/' . $banner->image) }}" alt="{{ $banner->title }}"
+                                <img alt="Banner Promo" src="{{ asset('aset-media/' . $banner->image) }}"
+                                    alt="{{ $banner->title }}"
                                     class="w-full h-full object-cover object-center transition duration-[3000ms] group-hover/item:scale-105">
 
                                 <div
@@ -86,7 +87,8 @@
     @endif
     <section id="home" class="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-950">
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('hero-section1.JPG') }}" class="w-full h-full object-cover" alt="Nuansa Ibadah Umroh">
+            <img alt="Hero section" src="{{ asset('hero-section1.JPG') }}" class="w-full h-full object-cover"
+                alt="Nuansa Ibadah Umroh">
 
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/80 to-blue-900/20"></div>
         </div>
@@ -349,7 +351,7 @@
 
                     <div
                         class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group relative">
-                        <img loading="lazy" src="{{ asset('foto-pabrik-1.JPG') }}"
+                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-1.JPG') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
                         <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500">
                         </div>
@@ -357,7 +359,7 @@
 
                     <div
                         class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group relative">
-                        <img loading="lazy" src="{{ asset('foto-pabrik-3.JPG') }}"
+                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-3.JPG') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
                         <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500">
                         </div>
@@ -487,9 +489,9 @@
                         }"
                         class="group bg-white rounded-[3rem] overflow-hidden border border-blue-50 shadow-sm hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 cursor-pointer relative">
 
-                        <div class="relative h-80 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}"
-                                alt="{{ $package->name }}"
+                        <div class="relative h-64 md:h-80 overflow-hidden rounded-t-[2rem]">
+                            <img loading="lazy" src="{{ asset('aset-media/' . $package->image) }}" {{-- Penambahan ALT yang mengandung keyword SEO --}}
+                                alt="Paket {{ $package->name }} - Grosir Koper Umroh Tangan Pertama Jakarta"
                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
 
                             <div
@@ -550,7 +552,8 @@
                         class="group bg-white rounded-2xl md:rounded-[2rem] border border-blue-50 overflow-hidden hover:border-secondary hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 flex flex-col h-full relative">
 
                         <div class="relative aspect-[3/4] bg-slate-100 overflow-hidden">
-                            <img loading="lazy" src="{{ asset('aset-media/' . $product->image) }}"
+                            <img loading="lazy" src="{{ asset('aset-media/' . $product->image) }}" {{-- Penambahan ALT dinamis dengan keyword SEO --}}
+                                alt="{{ $product->name }} - Grosir Koper {{ $product->category->name ?? '' }} Murah Jakarta"
                                 class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
 
                             <div class="absolute top-2 left-2 md:top-3 md:left-3">
