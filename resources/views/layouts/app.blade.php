@@ -4,22 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="KoperGrosir - Distributor resmi koper premium, perlengkapan Haji & Umroh, serta aksesoris travel terlengkap dengan harga grosir terbaik.">
+    <meta name="description" content="@yield('meta_description', 'Pusat grosir koper dan perlengkapan travel. Melayani pengadaan partai besar untuk biro perjalanan dan retail.')">
     <meta name="keywords"
         content="distributor koper, grosir koper murah, perlengkapan haji umroh, paket koper umroh, kain ihram grosir, mukena travel">
     <meta name="author" content="KoperGrosir">
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url('/') }}">
-    <meta property="og:title" content="KoperGrosir | Distributor Perlengkapan Travel & Ibadah">
-    <meta property="og:description"
-        content="Pusat grosir koper dan perlengkapan travel. Melayani pengadaan partai besar untuk biro perjalanan dan retail.">
+    <meta property="og:title" content="@yield('meta_title', 'KoperGrosir | Distributor Perlengkapan Travel')">
+    <meta property="og:description" content="@yield('meta_description', 'Pusat grosir koper dan perlengkapan travel.')">
     <meta property="og:image" content="{{ asset('logo.png') }}">
 
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="KoperGrosir | Distributor Perlengkapan Travel & Ibadah">
-    <title>Distributor Perlengkapan Travel & Ibadah</title>
+    <title>@yield('meta_title', 'KoperGrosir | Distributor Koper & Perlengkapan Umroh')</title>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>

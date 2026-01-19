@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('meta_title', 'Grosir Koper Umroh Murah Jakarta | KoperGrosir Tangan Pertama')
+@section('meta_description',
+    'Distributor koper grosir Jakarta. Sedia koper fiber, koper kain, dan paket perlengkapan
+    Haji/Umroh harga murah untuk biro travel.')
+
 @section('content')
     @if (isset($activeBanners) && $activeBanners->count() > 0)
         <section class="w-full bg-white pt-8" x-data="{
@@ -87,7 +92,7 @@
     @endif
     <section id="home" class="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-950">
         <div class="absolute inset-0 z-0">
-            <img alt="Hero section" src="{{ asset('hero-section1.JPG') }}" class="w-full h-full object-cover"
+            <img alt="Hero section" src="{{ asset('hero-section1.webp') }}" class="w-full h-full object-cover"
                 alt="Nuansa Ibadah Umroh">
 
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/80 to-blue-900/20"></div>
@@ -188,7 +193,7 @@
                 <div class="relative" data-aos="fade-right">
                     <div
                         class="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-900/10 border-8 border-slate-50">
-                        <img src="{{ asset('warehouse.JPG') }}" alt="Gudang Distributor"
+                        <img src="{{ asset('warehouse.webp') }}" alt="Gudang Distributor"
                             class="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition duration-700"
                             loading="lazy">
                     </div>
@@ -351,7 +356,7 @@
 
                     <div
                         class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group relative">
-                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-1.JPG') }}"
+                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-1.webp') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
                         <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500">
                         </div>
@@ -359,7 +364,7 @@
 
                     <div
                         class="col-span-1 rounded-[2.5rem] overflow-hidden border border-blue-50 shadow-xl group relative">
-                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-3.JPG') }}"
+                        <img alt="Gambar aktivitas pabrik" loading="lazy" src="{{ asset('foto-pabrik-3.webp') }}"
                             class="w-full h-full object-cover group-hover:scale-110 transition duration-1000">
                         <div class="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition duration-500">
                         </div>
@@ -743,7 +748,7 @@
                 <div data-aos="fade-up" data-aos-delay="100"
                     class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
-                        <img loading="lazy" src="{{ asset('testimoni1.png') }}" alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset('testimoni1.webp') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
                     </div>
                     <div
@@ -757,7 +762,7 @@
                 <div data-aos="fade-up" data-aos-delay="200"
                     class="group relative bg-white rounded-[2.5rem] p-2.5 shadow-sm border border-blue-50 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-500 hover:-translate-y-2">
                     <div class="aspect-[9/16] rounded-[2rem] overflow-hidden bg-slate-100">
-                        <img loading="lazy" src="{{ asset('testimoni2.png') }}" alt="Testimoni WA"
+                        <img loading="lazy" src="{{ asset('testimoni2.webp') }}" alt="Testimoni WA"
                             class="w-full h-full object-cover grayscale-[30%] group-hover:grayscale-0 transition duration-700">
                     </div>
                     <div
