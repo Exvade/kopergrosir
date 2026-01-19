@@ -93,7 +93,7 @@
     <section id="home" class="relative min-h-[85vh] flex items-center overflow-hidden bg-slate-950">
         <div class="absolute inset-0 z-0">
             <img alt="Hero section" src="{{ asset('hero-section1.webp') }}" class="w-full h-full object-cover"
-                alt="Nuansa Ibadah Umroh">
+                alt="Nuansa Ibadah Umroh" fetchpriority="high">
 
             <div class="absolute inset-0 bg-gradient-to-r from-blue-950 via-blue-950/80 to-blue-900/20"></div>
         </div>
