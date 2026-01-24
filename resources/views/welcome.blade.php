@@ -107,7 +107,6 @@
 
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
                     Supplier Koper <br>
-                    <span class="text-blue-300 font-light italic">Tangan Pertama.</span>
                 </h1>
 
                 <p class="text-lg md:text-xl text-blue-50/90 mb-10 leading-relaxed font-medium">
@@ -206,11 +205,8 @@
 
                 <div class="space-y-8" data-aos="fade-left">
                     <div class="space-y-4">
-                        <span class="text-secondary font-black text-[10px] uppercase tracking-[0.3em]">Authorized
-                            Partner</span>
                         <h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
-                            Distributor Utama <br>
-                            <span class="text-blue-600 font-light italic">Artlyn Kreasi Mandiri.</span>
+                            <span class="text-blue-600 font-light italic">PT. Artlyn Kreasi Mandiri.</span>
                         </h2>
                         <p class="text-slate-500 leading-relaxed text-lg">
                             Kami bukan sekadar menjual koper. Kami adalah mitra pengadaan yang memastikan biro Anda punya
