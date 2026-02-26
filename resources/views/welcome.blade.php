@@ -205,9 +205,6 @@
 
                 <div class="space-y-8" data-aos="fade-left">
                     <div class="space-y-4">
-                        <h2 class="text-4xl md:text-5xl font-extrabold text-primary leading-tight">
-                            <span class="text-blue-600 font-light italic">PT. Artlyn Kreasi Mandiri.</span>
-                        </h2>
                         <p class="text-slate-500 leading-relaxed text-lg">
                             Kami bukan sekadar menjual koper. Kami adalah mitra pengadaan yang memastikan biro Anda punya
                             stok koper kuat, emblem logo yang rapi, dan pengiriman yang tidak pernah telat.
@@ -878,7 +875,7 @@
 
     <div class="fixed bottom-8 right-8 z-[100] flex flex-col gap-4">
 
-        <a href="https://www.instagram.com/akmjakarta.id/" target="_blank"
+        <a href="https://www.instagram.com/kopergrosir.jkt/" target="_blank"
             class="bg-blue-600 text-white p-4 rounded-full shadow-2xl hover:bg-blue-700 transition duration-300 hover:scale-110 active:scale-90 group relative flex items-center justify-center">
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path
