@@ -19,6 +19,14 @@
     <meta property="twitter:title" content="KoperGrosir | Distributor Perlengkapan Travel & Ibadah">
     <title>@yield('meta_title', 'KoperGrosir | Distributor Koper & Perlengkapan Umroh')</title>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-70ETM25Y60"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-70ETM25Y60');
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
